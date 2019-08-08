@@ -68,9 +68,12 @@ class Element(object):
                      self.REQUIRED_ATTRIBUTES]
         defelem = self.__class__(*arguments)
         keywords = ['{0!r}'.format(arg) for arg in arguments]
-        keywords += ['{0}={1!r}'.format(k, v) for k, v in attrs.items()
+        keywords += ['{0}={1!r}'.format(k, v) for k, v in sorted(attrs.items())
                      if not numpy.array_equal(v, getattr(defelem, k, None))]
         return '{0}({1})'.format(self.__class__.__name__, ', '.join(keywords))
+
+    def __eq__(self, other):
+        return repr(self) == repr(other)
 
     def divide(self, frac):
         """split the element in len(frac) pieces whose length
