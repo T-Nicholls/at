@@ -13,6 +13,8 @@ from copy import copy, deepcopy
 from abc import ABC
 from collections.abc import Generator, Iterable
 from typing import Optional
+from warnings import warn
+from ..exceptions import ATWarning
 
 
 def _array(value, shape=(-1,), dtype=numpy.float64):
@@ -622,6 +624,28 @@ class ThinMultipole(Element):
         # Remove MaxOrder, PolynomA and PolynomB
         poly_a, len_a, ord_a = getpol(_array(kwargs.pop('PolynomA', poly_a)))
         poly_b, len_b, ord_b = getpol(_array(kwargs.pop('PolynomB', poly_b)))
+        if "K" in kwargs.keys():
+            k = kwargs.pop("K")
+            if ord_b < 1:
+                ord_b = 1
+            if poly_b[1] != k:
+                warn(
+                    ATWarning(
+                        f"In element {family_name}, focusing strength K: {k} is "
+                        f"inconsistent with PolynomB[1]: {poly_b[1]}, using {poly_b[1]}"
+                    )
+                )
+        if "H" in kwargs.keys():
+            h = kwargs.pop("H")
+            if ord_b < 2:
+                ord_b = 2
+            if poly_b[2] != h:
+                warn(
+                    ATWarning(
+                        f"In element {family_name}, focusing strength H: {h} is "
+                        f"inconsistent with PolynomB[2]: {poly_b[2]}, using {poly_b[2]}"
+                    )
+                )
         deforder = max(getattr(self, 'DefaultOrder', 0), ord_a, ord_b)
         maxorder = kwargs.pop('MaxOrder', deforder)
         kwargs.setdefault('PassMethod', 'ThinMPolePass')
@@ -784,6 +808,13 @@ class Dipole(Radiative, Multipole):
         Default PassMethod: :ref:`BndMPoleSymplectic4Pass`
         """
         poly_b = kwargs.pop('PolynomB', numpy.array([0, k]))
+        if poly_b[1] != k and k != 0.0:
+            warn(
+                ATWarning(
+                    f"In element {family_name}, focusing strength K: {k} is "
+                    f"inconsistent with PolynomB[1]: {poly_b[1]}, using {poly_b[1]}"
+                )
+            )
         kwargs.setdefault('BendingAngle', bending_angle)
         kwargs.setdefault('EntranceAngle', 0.0)
         kwargs.setdefault('ExitAngle', 0.0)
@@ -860,6 +891,13 @@ class Quadrupole(Radiative, Multipole):
         Default PassMethod: ``StrMPoleSymplectic4Pass``
         """
         poly_b = kwargs.pop('PolynomB', numpy.array([0, k]))
+        if poly_b[1] != k and k != 0.0:
+            warn(
+                ATWarning(
+                    f"In element {family_name}, focusing strength K: {k} is "
+                    f"inconsistent with PolynomB[1]: {poly_b[1]}, using {poly_b[1]}"
+                )
+            )
         kwargs.setdefault('PassMethod', 'StrMPoleSymplectic4Pass')
         super(Quadrupole, self).__init__(family_name, length, [], poly_b,
                                          **kwargs)
@@ -895,6 +933,13 @@ class Sextupole(Multipole):
         Default PassMethod: ``StrMPoleSymplectic4Pass``
         """
         poly_b = kwargs.pop('PolynomB', [0, 0, h])
+        if poly_b[2] != h and h != 0.0:
+            warn(
+                ATWarning(
+                    f"In element {family_name}, focusing strength H: {h} is "
+                    f"inconsistent with PolynomB[2]: {poly_b[2]}, using {poly_b[2]}"
+                )
+            )
         kwargs.setdefault('PassMethod', 'StrMPoleSymplectic4Pass')
         super(Sextupole, self).__init__(family_name, length, [], poly_b,
                                         **kwargs)
