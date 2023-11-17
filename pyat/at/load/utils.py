@@ -9,7 +9,7 @@ from warnings import warn
 from typing import Optional
 import sysconfig
 from at import integrators
-from at.lattice import AtWarning
+from ..exceptions import ATWarning
 from at.lattice import CLASS_MAP, elements as elt
 from at.lattice import idtable_element
 from at.lattice import Particle, Element
@@ -149,17 +149,17 @@ def find_class(elem_dict: dict, quiet: bool = False) -> type(Element):
         if not quiet and class_name:
             class_doesnotexist_warning = ("Class '{0}' does not exist.\n"
                                           "{1}".format(class_name, elem_dict))
-            warn(AtWarning(class_doesnotexist_warning))
+            warn(ATWarning(class_doesnotexist_warning))
         fam_name = elem_dict.get('FamName', '')
         try:
             return _CLASS_MAP[fam_name.lower()]
         except KeyError:
             pass_method = elem_dict.get('PassMethod', '')
             if not quiet and not pass_method:
-                warn(AtWarning("No PassMethod provided."
+                warn(ATWarning("No PassMethod provided."
                                "\n{0}".format(elem_dict)))
             elif not quiet and not pass_method.endswith('Pass'):
-                warn(AtWarning("Invalid PassMethod ({0}), provided pass "
+                warn(ATWarning("Invalid PassMethod ({0}), provided pass "
                                "methods should end in 'Pass'."
                                "\n{1}".format(pass_method, elem_dict)))
             class_from_pass = _PASS_MAP.get(pass_method)
@@ -242,7 +242,7 @@ def element_from_dict(elem_dict: dict, index: Optional[int] = None,
             msg = ''.join(('Error in element', location,
                            'PassMethod {0} '.format(pass_method),
                            message.format(*args), '\n{0}'.format(elem_dict)))
-            return AtWarning(msg)
+            return ATWarning(msg)
 
         class_name = cls.__name__
         pass_method = elem_dict.get('PassMethod')

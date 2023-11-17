@@ -5,7 +5,7 @@ import numpy
 import warnings
 from enum import Enum
 from scipy.interpolate import interp1d
-from ..lattice import AtWarning, AtError
+from ..exceptions import ATWarning, ATError
 from .wake_functions import long_resonator_wf, transverse_resonator_wf
 from .wake_functions import transverse_reswall_wf
 
@@ -118,7 +118,7 @@ class Wake(object):
             w = self._reswall(wcomp, *args, **kwargs)
 
         else:
-            raise AtError('Invalid WakeType: {}'.format(wtype))
+            raise ATError('Invalid WakeType: {}'.format(wtype))
         if self.components[wcomp] is None:
             self.components[wcomp] = w
         else:
@@ -126,7 +126,7 @@ class Wake(object):
 
     def _resample(self, s, w):
         if self._srange[0] < s[0] or self._srange[-1] < s[-1]:
-            warnings.warn(AtWarning('Input wake is smaller '
+            warnings.warn(ATWarning('Input wake is smaller '
                                     'than desired Wake() range. '
                                     'Filling with zeros.\n'))
         fint = interp1d(s, w, bounds_error=False, fill_value=0)
@@ -165,7 +165,7 @@ class Wake(object):
                                            qfactor, rshunt, yokoya_factor,
                                            beta)
         else:
-            raise AtError('Invalid WakeComponent: {}'.format(wcomp))
+            raise ATError('Invalid WakeComponent: {}'.format(wcomp))
 
     def _reswall(self, wcomp, length, rvac, conduct, beta, yokoya_factor=1):
     
@@ -183,13 +183,13 @@ class Wake(object):
                                                        self._srange)))
 
         if wcomp is WakeComponent.Z:
-            raise AtError('Resitive wall not available '
+            raise ATError('Resitive wall not available '
                           'for WakeComponent: {}'.format(wcomp))
         elif isinstance(wcomp, WakeComponent):
             return transverse_reswall_wf(self._srange, yokoya_factor,
                                          length, rvac, conduct, beta)
         else:
-            raise AtError('Invalid WakeComponent: {}'.format(wcomp))
+            raise ATError('Invalid WakeComponent: {}'.format(wcomp))
 
     @staticmethod
     def resonator(srange, wakecomp,
@@ -219,7 +219,7 @@ class Wake(object):
             rshunt = numpy.broadcast_to(rshunt, (nelems, ))
             yokoya_factor = numpy.broadcast_to(yokoya_factor, (nelems, ))
         except ValueError:
-            raise AtError('Wake object inputs should be either scalars '
+            raise ATError('Wake object inputs should be either scalars '
                           'or with shape (len(wakecomp), )')
         for wc, fr, qf, rs, yk in zip(wakecomp, frequency, qfactor, rshunt,
                                       yokoya_factor):
@@ -281,7 +281,7 @@ class Wake(object):
             conduct = numpy.broadcast_to(conduct, (nelems, ))
             yokoya_factor = numpy.broadcast_to(yokoya_factor, (nelems, ))
         except ValueError:
-            raise AtError('Wake object inputs should be either scalars '
+            raise ATError('Wake object inputs should be either scalars '
                           'or with shape (len(wakecomp), )')
         for wc, le, rv, co, yk in zip(wakecomp, length, rvac,
                                       conduct, yokoya_factor):

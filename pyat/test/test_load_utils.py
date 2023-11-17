@@ -2,7 +2,7 @@ import at
 import numpy
 import pytest
 import warnings
-from at import AtWarning
+from at import ATWarning
 from at.lattice import Lattice, elements, params_filter, no_filter
 from at.load.utils import find_class, element_from_dict
 from at.load.utils import _CLASS_MAP, _PASS_MAP
@@ -38,14 +38,14 @@ def test_lattice_gets_attributes_from_elements():
 
 
 def test_no_bending_in_the_cell_warns_correctly():
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         params = _matlab_scanner([], energy=3.e+9)
         assert params['periodicity'] == 1
 
 
 def test_non_integer_number_of_cells_warns_correctly():
     d = elements.Dipole('d1', 1, BendingAngle=0.195)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         params = _matlab_scanner([d], energy=3.e+9)
         assert params['periodicity'] == 32
 
@@ -57,10 +57,10 @@ def test_inconsistent_energy_values_warns_correctly():
                          PassMethod='BndMPoleSymplectic4RadPass')
     m1 = elements.Marker('m1', Energy=5.e+9)
     m2 = elements.Marker('m2', Energy=3.e+9)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         params = _matlab_scanner([m1, m2])
         assert params['_energy'] == 5.e+9
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         params = _matlab_scanner([d1, d2])
         assert params['_energy'] == 5.e+9
 
@@ -68,14 +68,14 @@ def test_inconsistent_energy_values_warns_correctly():
 def test_more_than_one_RingParam_in_ring_raises_warning():
     p1 = RingParam('rp1', 5.e+6)
     p2 = RingParam('rp2', 3.e+6)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         params = _matlab_scanner([p1, p2])
         assert params['_energy'] == 5.e+6
 
 
 def test_invalid_class_warns_correctly():
     elem_kwargs = {'Class': 'Invalid'}
-    with pytest.warns(at.AtWarning):
+    with pytest.warns(at.ATWarning):
         find_class(elem_kwargs, quiet=False)
     with warnings.catch_warnings(record=True) as record:
         find_class(elem_kwargs, quiet=True)
@@ -84,7 +84,7 @@ def test_invalid_class_warns_correctly():
 
 def test_no_pass_method_warns_correctly():
     elem_kwargs = {}
-    with pytest.warns(at.AtWarning):
+    with pytest.warns(at.ATWarning):
         find_class(elem_kwargs, quiet=False)
     with warnings.catch_warnings(record=True) as record:
         find_class(elem_kwargs, quiet=True)
@@ -93,7 +93,7 @@ def test_no_pass_method_warns_correctly():
 
 def test_invalid_pass_method_warns_correctly():
     elem_kwargs = {'PassMethod': 'invalid'}
-    with pytest.warns(at.AtWarning):
+    with pytest.warns(at.ATWarning):
         find_class(elem_kwargs, quiet=False)
     with warnings.catch_warnings(record=True) as record:
         find_class(elem_kwargs, quiet=True)
@@ -236,7 +236,7 @@ def test_find_Element(elem_kwargs):
         {'Class': 'Drift', 'PassMethod': 'InvalidPass',
          'Length': 1.0, 'FamName': 'fam'}))
 def test_sanitise_class_error(elem_kwargs):
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         element_from_dict(elem_kwargs)
 
 

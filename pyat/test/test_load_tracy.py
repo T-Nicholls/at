@@ -133,7 +133,7 @@ def test_tracy_element_from_string_handles_bending(defaults):
         BendingAngle=0.00575435036929238,
         EntranceAngle=0,
         ExitAngle=0.00575435036929238,
-        k=-0.12411107,
+        k=-0.124,
         FullGap=0.03,
         FringeInt1=1,
         FringeInt2=1,

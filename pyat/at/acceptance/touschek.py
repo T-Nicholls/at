@@ -4,12 +4,13 @@ Module to compute the touschek lifetime of the ring
 
 import at
 import numpy
-from ..lattice import Lattice, AtError, AtWarning
+from ..lattice import Lattice
+from ..exceptions import ATError, ATWarning
 import warnings
 from scipy.special import iv
 from scipy import integrate
 from scipy.optimize import fsolve
-from ..constants import qe, clight, _e_radius
+from ..constants import qe, clight, e_radius
 
 
 __all__ = ['get_bunch_length_espread', 'get_lifetime', 'get_scattering_rate']
@@ -44,7 +45,7 @@ def get_bunch_length_espread(ring, zn=None, bunch_curr=None, espread=None):
     if zn is None and bunch_curr is None:
         bl = bl0
     elif zn is None or bunch_curr is None:
-        raise AtError('Please provide both current and Z/n for bunch '
+        raise ATError('Please provide both current and Z/n for bunch '
                       'length calculation')
     else:
         vrf = ring.get_rf_voltage()
@@ -162,7 +163,7 @@ def _init_ma_rp(ring, refpts=None, offset=None, momap=None,
         except ValueError:
             msg = ('offset and refpts have incoherent '
                    'shapes: {0}, {1}'.format(offset.shape, refpts.shape))
-            raise AtError(msg)
+            raise ATError(msg)
 
     if momap is not None:
         assert len(momap) == len(refpts), \
@@ -176,7 +177,7 @@ def _init_ma_rp(ring, refpts=None, offset=None, momap=None,
     if not numpy.all(mask):
         zerolength_warning = ('zero-length elements removed '
                               'from lifetime calculation')
-        warnings.warn(AtWarning(zerolength_warning))
+        warnings.warn(ATWarning(zerolength_warning))
 
     refpts = refpts[mask]
     if offset is not None:

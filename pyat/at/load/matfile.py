@@ -8,8 +8,8 @@ from warnings import warn
 from typing import Optional, Generator, Sequence
 import scipy.io
 import numpy
-from ..lattice import elements, AtWarning, params_filter, AtError
-from ..lattice import Element, Lattice
+from ..lattice import elements, params_filter, Element, Lattice
+from ..exceptions import ATWarning, ATError
 from .allfiles import register_format
 from .utils import element_from_dict, element_from_m, RingParam
 from .utils import element_to_dict, element_to_m
@@ -70,7 +70,7 @@ def matfile_generator(params: dict, mat_file: str)\
     key = params.setdefault('mat_key', default_key)
     if key not in m.keys():
         kok = [k for k in m.keys() if '__' not in k]
-        raise AtError('Selected mat_key does not exist, '
+        raise ATError('Selected mat_key does not exist, '
                       'please select in: {}'.format(kok))
     check = params.pop('check', True)
     quiet = params.pop('quiet', False)
@@ -130,7 +130,7 @@ def ringparam_filter(params: dict, elem_iterator, *args)\
     params['_radiation'] = radiate
 
     if len(ringparams) > 1:
-        warn(AtWarning('More than 1 RingParam element, the 1st one is used'))
+        warn(ATWarning('More than 1 RingParam element, the 1st one is used'))
 
 
 def load_mat(filename: str, **kwargs) -> Lattice:
@@ -190,10 +190,10 @@ def mfile_generator(params: dict, m_file: str)\
             try:
                 elem = element_from_m(line)
             except ValueError:
-                warn(AtWarning('Invalid line {0} skipped.'.format(lineno)))
+                warn(ATWarning('Invalid line {0} skipped.'.format(lineno)))
                 continue
             except KeyError:
-                warn(AtWarning('Line {0}: Unknown class.'.format(lineno)))
+                warn(ATWarning('Line {0}: Unknown class.'.format(lineno)))
                 continue
             else:
                 yield elem

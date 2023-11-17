@@ -5,7 +5,6 @@ such as the tune and the chromaticity
 from typing import Optional
 import numpy
 from ..lattice import Lattice, Refpts, set_value_refpts
-from ..lattice import AtWarning, AtError
 from ..physics import get_tune, get_chrom
 
 

@@ -4,7 +4,8 @@ calculate the loss boundary for different
 grid definitions
 """
 
-from at.lattice import Lattice, AtError
+from ..lattice import Lattice
+from ..exceptions import ATError
 from typing import Optional, Sequence
 from enum import Enum
 import numpy
@@ -65,9 +66,9 @@ def get_plane_index(planes):
             try:
                 planesi = numpy.append(planesi, _pdict[p])
             except KeyError:
-                raise AtError('Allowed values for plane are x,xp,y,yp,dp,ct')
+                raise ATError('Allowed values for plane are x,xp,y,yp,dp,ct')
         else:
-            raise AtError('Allowed values for plane are x,xp,y,yp,dp,ct')
+            raise ATError('Allowed values for plane are x,xp,y,yp,dp,ct')
     return planesi
 
 
@@ -95,17 +96,17 @@ def grid_configuration(planes, npoints, amplitudes, grid_mode, bounds=None,
     """
     ndims = len(numpy.atleast_1d(planes))
     if ndims > 2 or ndims == 0:
-        raise AtError('planes can have 1 or 2 element (1D or 2D aperture)')
+        raise ATError('planes can have 1 or 2 element (1D or 2D aperture)')
     elif ndims == 1 and grid_mode is GridMode.RADIAL:
         grid_mode = GridMode.CARTESIAN
 
     if numpy.shape(numpy.atleast_1d(npoints)) != (ndims,):
-        raise AtError('npoints shape should be (len(planes),)')
+        raise ATError('npoints shape should be (len(planes),)')
     if numpy.shape(numpy.atleast_1d(amplitudes)) != (ndims,):
-        raise AtError('amplitudes shape should be (len(planes),)')
+        raise ATError('amplitudes shape should be (len(planes),)')
     if (numpy.shape(numpy.atleast_2d(bounds)) != (ndims, 2)
        and bounds is not None):
-        raise AtError('bounds shape should be (len(planes),2)')
+        raise ATError('bounds shape should be (len(planes),2)')
 
     if grid_mode is GridMode.RADIAL or grid_mode is GridMode.RECURSIVE:
         if bounds is None:
@@ -115,7 +116,7 @@ def grid_configuration(planes, npoints, amplitudes, grid_mode, bounds=None,
         if bounds is None:
             bounds = numpy.array([[p-1, 1] for p in range(ndims)])
     else:
-        raise AtError('GridMode {0} undefined.'.format(grid_mode))
+        raise ATError('GridMode {0} undefined.'.format(grid_mode))
 
     config = grid_config(planes, amplitudes, npoints,
                          bounds, grid_mode, shift_zero)
@@ -260,7 +261,7 @@ def get_grid_boundary(mask, grid, config):
         return bnd
 
     if not numpy.any(mask):
-        raise AtError("No particle survived, please check your grid "
+        raise ATError("No particle survived, please check your grid "
                       "or lattice.")
 
     if config.mode is GridMode.RADIAL:
@@ -268,7 +269,7 @@ def get_grid_boundary(mask, grid, config):
     elif config.mode is GridMode.CARTESIAN:
         return grid_boundary(mask, grid, config)
     else:
-        raise AtError('GridMode {0} undefined.'.format(grid.mode))
+        raise ATError('GridMode {0} undefined.'.format(grid.mode))
 
 
 def grid_boundary_search(ring, planes, npoints, amplitudes, nturns=1024,

@@ -5,7 +5,8 @@ from .boundary import GridMode
 from .boundary import boundary_search
 from typing import Optional, Sequence
 import multiprocessing
-from ..lattice import Lattice, Refpts, frequency_control, AtError
+from ..lattice import Lattice, Refpts, frequency_control
+from ..exceptions import ATError
 
 
 __all__ = ['get_acceptance', 'get_1d_acceptance', 'get_horizontal_acceptance',
@@ -145,7 +146,7 @@ def get_acceptance(
             msg = ('offset and refpts have incoherent '
                    'shapes: {0}, {1}'.format(numpy.shape(offset),
                                              numpy.shape(refpts)))
-            raise AtError(msg)
+            raise ATError(msg)
     else:
         offset=[None for _ in rp]
     for r, o in zip(rp, offset):

@@ -1,6 +1,7 @@
 from .elements import Element
 import numpy
 import io
+from ..exceptions import ATWarning
 from ..constants import clight
 from warnings import warn
 
@@ -46,7 +47,7 @@ class InsertionDeviceKickMap(Element):
         setattr(self, 'PassMethod', 'IdTablePass')
 
     def get_PassMethod(self):
-        warn(UserWarning('get_PassMethod is deprecated; do not use'))
+        warn(ATWarning('get_PassMethod is deprecated; do not use'))
         return getattr(self, 'PassMethod')
 
     def from_text_file(self, Nslice, Filename_in, Energy):
@@ -149,7 +150,7 @@ class InsertionDeviceKickMap(Element):
                                     table_cols2 = haxis
                                     table_rows2 = vaxis
                                 if block_counter > 2:
-                                    print('atWarning: only two tables read')
+                                    warn(ATWarning('only two tables read'))
                             block_lines += 1
             # dummy variables not implemented in the reading function
             # but required

@@ -4,7 +4,8 @@ Functions relating to particle generation
 import numpy as np
 from numpy.linalg import cholesky, LinAlgError
 from warnings import warn
-from ..lattice import AtError, AtWarning, Lattice, Orbit, random
+from ..lattice import Lattice, Orbit, random
+from ..exceptions import ATError, ATWarning
 
 __all__ = ['beam', 'sigma_matrix']
 
@@ -56,12 +57,12 @@ def sigma_matrix(ring: Lattice = None, **kwargs):
         if len(miss) == 0:
             return [kwargs.pop(key) for key in keys]
         else:
-            raise AtError('{0}: missing {1}'.format(mess, ', '.join(miss)))
+            raise ATError('{0}: missing {1}'.format(mess, ', '.join(miss)))
 
     def ignore(mess):
         ok = kwargs.keys()
         if any(ok):
-            warn(AtWarning('{0}: {1} ignored'.format(mess, ', '.join(ok))))
+            warn(ATWarning('{0}: {1} ignored'.format(mess, ', '.join(ok))))
 
     def r_s():
         rs = np.zeros((2, 2))
@@ -104,7 +105,7 @@ def sigma_matrix(ring: Lattice = None, **kwargs):
 
         sigm = emx * rmat[0, :, :] + emy * rmat[1, :, :]
         if ems is None:
-            warn(AtWarning('Monochromatic beam: no energy spread'))
+            warn(ATWarning('Monochromatic beam: no energy spread'))
         else:
             sigm += ems * rmat[2, :, :]
         return sigm

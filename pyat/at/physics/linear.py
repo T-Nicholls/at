@@ -9,9 +9,8 @@ import warnings
 from scipy.linalg import solve
 from ..constants import clight
 from ..lattice import DConstant, Refpts, get_bool_index, get_uint32_index
-from ..lattice import AtWarning, Lattice, Orbit, check_6d, get_s_pos
-from ..lattice import AtError
-from ..lattice import frequency_control
+from ..lattice import Lattice, Orbit, check_6d, get_s_pos, frequency_control
+from ..exceptions import ATError, ATWarning
 from ..tracking import internal_lpass
 from .orbit import find_orbit4, find_orbit6
 from .matrix import find_m44, find_m66
@@ -124,8 +123,8 @@ def _tunes(ring, **kwargs):
     try:
         _, vps = a_matrix(mt)
         tunes = numpy.mod(numpy.angle(vps) / 2.0 / pi, 1.0)
-    except AtError:
-        warnings.warn(AtWarning('Unstable ring'))
+    except ATError:
+        warnings.warn(ATWarning('Unstable ring'))
         tunes = numpy.empty(nd)
         tunes[:] = numpy.NaN
     return tunes
@@ -329,7 +328,7 @@ def _linopt(ring: Lattice, analyze, refpts=None, dp=None, dct=None, df=None,
             except (ValueError, KeyError):  # record arrays throw ValueError !
                 msg = ("'get_w' option for a line requires 'twiss_in' calculated "
                        "with 'get_w' activated")
-                raise AtError(msg)
+                raise ATError(msg)
 
             orbit = orbit + numpy.hstack((dd0, 1.0, 0.0)) * dp * dp
             dorbit = numpy.hstack((d0+dd0*dp, 1.0, 0.0))

@@ -8,8 +8,7 @@ from __future__ import annotations
 import numpy
 from warnings import warn
 from scipy.fft import fft, fftfreq
-from at.lattice import AtWarning
-from at.lattice import AtError
+from ..exceptions import ATError, ATWarning
 import multiprocessing
 from functools import partial
 
@@ -80,11 +79,11 @@ def _interpolated_fft(samples, num_harmonics, fmin, fmax,
     if nfound == 0:
         msg = ('No harmonic found within range, '
                'consider extending it or increase maxiter')
-        raise AtError(msg)
+        raise ATError(msg)
     elif nfound < num_harmonics:
         msg = ('{0}/{1} harmonics found in '
                'requested range'.format(nfound, num_harmonics))
-        warn(AtWarning(msg))
+        warn(ATWarning(msg))
 
     coefficients, frequencies = zip(*sorted(zip(coefficients, frequencies),
                                     key=lambda tp: numpy.abs(tp[0]),
@@ -131,10 +130,10 @@ def get_spectrum_harmonic(cent: numpy.ndarray, method: str = 'interp_fft',
         cent -= numpy.mean(cent)
     if method == 'interp_fft' or method == 'laskar':
         if hann:
-            warn(AtWarning('Windowing not efficient for'
+            warn(ATWarning('Windowing not efficient for'
                            'interpolated FFT: ignored'))
         if pad_length is not None:
-            warn(AtWarning('Padding not efficient for'
+            warn(ATWarning('Padding not efficient for'
                            'interpolated FFT: ignored'))
         ha_tune, ha_amp = _interpolated_fft(cent, num_harmonics,
                                             fmin, fmax, maxiter)
@@ -175,16 +174,16 @@ def _get_main_single(cents, **kwargs):
             tunes, amps, phases = _get_max_spectrum(freq, amp,
                                                     phase, fmin,
                                                     fmax)
-        except AtError:
+        except ATError:
             msg = ('No harmonic found within range, '
                    'consider extending it or increase maxiter')
-            warn(AtWarning(msg))
+            warn(ATWarning(msg))
             tunes = numpy.nan
             amps = numpy.nan
             phases = numpy.nan
         except ValueError:
             msg = ('Invalid input vector provided')
-            warn(AtWarning(msg))
+            warn(ATWarning(msg))
             tunes = numpy.nan
             amps = numpy.nan
             phases = numpy.nan

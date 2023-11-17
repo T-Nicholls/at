@@ -2,7 +2,7 @@ import numpy
 from numpy.testing import assert_allclose, assert_equal
 import pytest
 from at import elements
-from at.lattice import Lattice, AtWarning, AtError
+from at.lattice import Lattice, ATWarning, ATError
 
 
 def test_lattice_creation_gets_attributes_from_arguments():
@@ -55,14 +55,14 @@ def test_lattice_creation_from_lattice_inherits_attributes():
         assert lat2.an_attr == 12
 
 
-def test_lattice_energy_is_not_defined_raises_AtError():
+def test_lattice_energy_is_not_defined_raises_ATError():
     d = elements.Dipole('d1', 1, BendingAngle=numpy.pi)
-    with pytest.raises(AtError):
+    with pytest.raises(ATError):
         Lattice([d])
 
 
 def test_item_is_not_an_AT_element_warns_correctly():
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         Lattice(['a'], energy=0, periodicity=1)
 
 
@@ -160,15 +160,15 @@ def test_radiation_change(hmba_lattice):
 
 def test_radiation_state_errors(hmba_lattice):
     hmba_lattice.radiation_on()
-    with pytest.raises(AtError):
+    with pytest.raises(ATError):
         hmba_lattice.linopt()
     hmba_lattice.radiation_off()
     hmba_lattice.linopt()
-    with pytest.raises(AtError):
+    with pytest.raises(ATError):
         hmba_lattice.ohmi_envelope()
     hmba_lattice.enable_6d()
     hmba_lattice.ohmi_envelope()
-    with pytest.raises(AtError):
+    with pytest.raises(ATError):
         hmba_lattice.get_mcf()
     hmba_lattice.disable_6d()
     hmba_lattice.get_mcf()

@@ -25,10 +25,10 @@ else:
 from warnings import warn
 from ..constants import clight, e_mass
 from .particle_object import Particle
-from .utils import AtError, AtWarning, Refpts
+from ..exceptions import ATError, ATWarning
 # noinspection PyProtectedMember
 from .utils import get_uint32_index, get_bool_index, _refcount, Uint32Refpts
-from .utils import refpts_iterator, checktype
+from .utils import refpts_iterator, checktype, Refpts
 from .utils import get_s_pos, get_elements
 from .utils import get_value_refpts, set_value_refpts
 from .utils import set_shift, set_tilt, get_geometry
@@ -209,7 +209,7 @@ class Lattice(list):
         if 'energy' in kwargs:
             kwargs.pop('_energy', None)
         elif '_energy' not in kwargs:
-            raise AtError('Lattice energy is not defined')
+            raise ATError('Lattice energy is not defined')
         if 'particle' in kwargs:
             kwargs.pop('_particle', None)
 
@@ -392,7 +392,7 @@ class Lattice(list):
             nbp = periodicity / n
             periodicity = int(round(nbp))
             if abs(periodicity - nbp) > _TWO_PI_ERROR:
-                warn(AtWarning('Non-integer number of cells: {}/{}. Periodi'
+                warn(ATWarning('Non-integer number of cells: {}/{}. Periodi'
                                'city set to 1'.format(self.periodicity, n)))
                 periodicity = 1
         try:
@@ -513,10 +513,12 @@ class Lattice(list):
 
     def copy(self) -> Lattice:
         """Returns a shallow copy of the lattice"""
+        #not recursive
         return copy.copy(self)
 
     def deepcopy(self) -> Lattice:
         """Returns a deep copy of the lattice"""
+        #recursive
         return copy.deepcopy(self)
         
     def slice_elements(self, refpts: Refpts, slices: int = 1) -> Lattice:
@@ -746,11 +748,11 @@ class Lattice(list):
                 fp = numpy.zeros(self.harmonic_number)
                 fp[::int(self.harmonic_number/bunches)] = 1
             else:
-                raise AtError('Harmonic number has to be a '
+                raise ATError('Harmonic number has to be a '
                               'multiple of the scalar input '
                               'bunches')
         elif numpy.isscalar(bunches):
-            raise AtError('Scalar input for bunches must be '
+            raise ATError('Scalar input for bunches must be '
                           'an integer')
         else:
             bunches = bunches.astype(dtype=float, casting='safe',
@@ -806,7 +808,7 @@ class Lattice(list):
         try:
             circ = self.beta * clight * \
                 self.harmonic_number/self.rf_frequency
-        except AtError:
+        except ATError:
             circ = self.circumference
         bs = circ/len(self._fillpattern)
         allpos = bs*numpy.arange(len(self._fillpattern))
@@ -836,14 +838,14 @@ class Lattice(list):
         cell_h = float(value) / self.periodicity
         # check on ring
         if value-round(value) != 0:
-            raise AtError('harmonic number ({}) must be integer'.format(value))
+            raise ATError('harmonic number ({}) must be integer'.format(value))
         # check on cell
         # if cell_h-round(cell_h) != 0:
-        #     raise AtError('harmonic number ({}) must be a multiple of {}'
+        #     raise ATError('harmonic number ({}) must be a multiple of {}'
         #                   .format(value, int(self.periodicity)))
         self._cell_harmnumber = cell_h
         if len(self._fillpattern) != value:
-            warn(AtWarning('Harmonic number changed, resetting fillpattern to '
+            warn(ATWarning('Harmonic number changed, resetting fillpattern to '
                            'default (single bunch)'))
             self.set_fillpattern()
 
@@ -1000,7 +1002,7 @@ class Lattice(list):
                 raise TypeError("All arguments must be subclasses of"
                                 " 'LongtMotion'")
             if len(kwargs) > 0:
-                raise AtError('No keyword is allowed in this mode')
+                raise ATError('No keyword is allowed in this mode')
         else:
             def getpass(elem):
                 for eltype, psm in pass_table:
@@ -1276,7 +1278,7 @@ class Lattice(list):
         break_elems = numpy.reshape(break_elems, -1)
         # Check element lengths
         if not all(e.Length == 0 for e in break_elems):
-            warn(AtWarning(
+            warn(ATWarning(
                  "Inserting elements with length!=0 may change the lattice"))
         # broadcast break_s and break_elems to arrays of same size
         # and create an iterator over the elements to be inserted
@@ -1435,7 +1437,7 @@ def type_filter(params, elems: Iterable[Element]) \
                 radiate = True
             yield elem
         else:
-            warn(AtWarning('item {0} ({1}) is not an AT element: '
+            warn(ATWarning('item {0} ({1}) is not an AT element: '
                            'ignored'.format(idx, elem)))
     params['_radiation'] = radiate
 
@@ -1502,7 +1504,7 @@ def params_filter(params, elem_filter: Filter, *args) \
             # Guess energy from the Energy attribute of the elements
             energy = params.setdefault('energy',  max(energies))
             if min(energies) < max(energies):
-                warn(AtWarning('Inconsistent energy values, '
+                warn(ATWarning('Inconsistent energy values, '
                                '"energy" set to {0}'.format(energy)))
 
     if 'periodicity' not in params:
@@ -1511,11 +1513,11 @@ def params_filter(params, elem_filter: Filter, *args) \
             nbp = 2.0 * numpy.pi / sum(thetas)
         except ZeroDivisionError:
             periodicity = 1
-            warn(AtWarning('No bending in the cell, set "Periodicity" to 1'))
+            warn(ATWarning('No bending in the cell, set "Periodicity" to 1'))
         else:
             periodicity = int(round(nbp))
             if abs(periodicity - nbp) > _TWO_PI_ERROR:
-                warn(AtWarning('Non-integer number of cells: '
+                warn(ATWarning('Non-integer number of cells: '
                                '{0} -> {1}'.format(nbp, periodicity)))
         params['periodicity'] = periodicity
 

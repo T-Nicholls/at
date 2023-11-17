@@ -39,6 +39,7 @@ from enum import Enum
 from itertools import compress
 from fnmatch import fnmatch
 from .elements import Element, Dipole
+from ..exceptions import ATError
 
 _GEOMETRY_EPSIL = 1.0e-3
 
@@ -47,7 +48,7 @@ BoolRefpts = numpy.ndarray
 Uint32Refpts = numpy.ndarray
 
 
-__all__ = ['All', 'End', 'AtError', 'AtWarning', 'axis_descr',
+__all__ = ['All', 'End', 'axis_descr',
            'check_radiation', 'check_6d',
            'set_radiation', 'set_6d',
            'make_copy', 'uint32_refpts', 'bool_refpts',
@@ -70,14 +71,6 @@ _axis_def = dict(
 )
 for vvv in [vv for vv in _axis_def.values()]:
     _axis_def[vvv['index']] = vvv
-
-
-class AtError(Exception):
-    pass
-
-
-class AtWarning(UserWarning):
-    pass
 
 
 _typ1 = "None, All, End, int, bool"
@@ -183,7 +176,7 @@ def check_6d(is_6d: bool) -> Callable:
     r"""Decorator for optics functions
 
     Wraps a function like :pycode:`func(ring, *args, **kwargs)` where
-    :pycode:`ring` is a :py:class:`.Lattice` object. Raise :py:class:`.AtError`
+    :pycode:`ring` is a :py:class:`.Lattice` object. Raise :py:class:`.ATError`
     if :pycode:`ring.is_6d` is not the desired *is_6d* state. No test is
     performed if :pycode:`ring` is not a :py:class:`.Lattice`.
 
@@ -191,7 +184,7 @@ def check_6d(is_6d: bool) -> Callable:
         is_6d: Desired 6D state
 
     Raises:
-        AtError: if :pycode:`ring.is_6d` is not *is_6d*
+        ATError: if :pycode:`ring.is_6d` is not *is_6d*
 
     Example:
 
@@ -199,7 +192,7 @@ def check_6d(is_6d: bool) -> Callable:
         ... def find_orbit4(ring, dct=None, guess=None, **kwargs):
                 ...
 
-        Raises :py:class:`.AtError` if :pycode:`ring.is_6d` is :py:obj:`True`
+        Raises :py:class:`.ATError` if :pycode:`ring.is_6d` is :py:obj:`True`
 
     See Also:
         :py:func:`set_6d`
@@ -209,7 +202,7 @@ def check_6d(is_6d: bool) -> Callable:
         def wrapper(ring, *args, **kwargs):
             ringrad = getattr(ring, 'is_6d', is_6d)
             if ringrad != is_6d:
-                raise AtError('{0} needs "ring.is_6d" {1}'.format(
+                raise ATError('{0} needs "ring.is_6d" {1}'.format(
                     func.__name__, is_6d))
             return func(ring, *args, **kwargs)
         return wrapper

@@ -1,6 +1,7 @@
 import numpy
 from enum import IntEnum
-from ..lattice import Lattice, AtWarning
+from ..lattice import Lattice
+from ..exceptions import ATWarning
 from at.lattice import RFCavity, Collective
 from at.lattice.elements import _array
 from at.lattice.utils import Refpts, uint32_refpts, make_copy
@@ -320,7 +321,7 @@ class BeamLoadingElement(RFCavity, Collective):
                     _CAV_ATTRIBUTES]
         if cavitymode == CavityMode.PASSIVE:
             if cav_args[1] != 0.0:
-                warnings.warn(AtWarning('Setting Cavity Voltage to 0'))
+                warnings.warn(ATWarning('Setting Cavity Voltage to 0'))
             cav_args[1] = 0.0
         return BeamLoadingElement(family_name, *cav_args, ring,
                                   qfactor, rshunt, blmode=blmode,

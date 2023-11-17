@@ -3,7 +3,7 @@ import numpy
 from numpy.testing import assert_allclose as assert_close
 from numpy.testing import assert_equal
 import pytest
-from at import AtWarning, physics
+from at import ATWarning, physics
 from at import lattice_track
 from at import lattice_pass, internal_lpass
 
@@ -80,11 +80,11 @@ def test_find_orbit4_with_two_refpts_with_and_without_guess(dba_lattice):
 
 def test_orbit_maxiter_warnings(hmba_lattice):
     hmba_lattice_rad = hmba_lattice.radiation_on(copy=True)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         physics.find_orbit4(hmba_lattice, max_iterations=1)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         physics.find_sync_orbit(hmba_lattice, max_iterations=1)
-    with pytest.warns(AtWarning):
+    with pytest.warns(ATWarning):
         physics.find_orbit6(hmba_lattice_rad, max_iterations=1)
 
 
@@ -158,8 +158,8 @@ def test_find_orbit6_produces_same_result_with_keep_lattice_True(hmba_lattice):
     assert_close(orbit0, orbit2, rtol=0, atol=1e-12)
 
 
-def test_find_orbit6_raises_AtError_if_there_is_no_cavity(dba_lattice):
-    with pytest.raises(at.lattice.utils.AtError):
+def test_find_orbit6_raises_ATError_if_there_is_no_cavity(dba_lattice):
+    with pytest.raises(at.exceptions.ATError):
         physics.find_orbit6(dba_lattice)
 
 

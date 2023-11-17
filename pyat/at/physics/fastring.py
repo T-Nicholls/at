@@ -5,7 +5,8 @@ from functools import reduce
 import numpy
 from typing import Tuple, Optional
 from at.lattice import RFCavity, Element, Marker, Lattice, get_cells, checkname
-from at.lattice import get_elements, M66, SimpleQuantDiff, AtError
+from at.lattice import get_elements, M66, SimpleQuantDiff
+from ..exceptions import ATError
 from at.physics import gen_m66_elem, gen_detuning_elem, gen_quantdiff_elem
 from at.constants import clight, e_mass
 import copy
@@ -179,10 +180,10 @@ def simple_ring(energy: float, circumference: float, harmonic_number: int,
     try:
         TimeLag = numpy.broadcast_to(TimeLag, Vrf.shape)
     except ValueError:
-        raise AtError('TimeLag needs to be broadcastable to Vrf (same shape)')
+        raise ATError('TimeLag needs to be broadcastable to Vrf (same shape)')
 
     if (len(harmonic_number) != len(Vrf)):
-        raise AtError('harmonic_number input must match length of Vrf input')
+        raise ATError('harmonic_number input must match length of Vrf input')
 
     # compute rf frequency
     frf = harmonic_number * clight / circumference

@@ -4,8 +4,8 @@ from .atpass import atpass as _atpass, elempass as _elempass
 from .utils import fortran_align, has_collective, format_results
 from .utils import initialize_lpass, disable_varelem, variable_refs
 from ..lattice import Lattice, Element, Refpts, End
-from ..lattice import get_uint32_index
-from ..lattice import AtWarning, DConstant, random
+from ..lattice import get_uint32_index, DConstant, random
+from ..exceptions import ATWarning
 from collections.abc import Iterable
 from typing import Optional
 from functools import partial
@@ -92,9 +92,9 @@ def _plattice_pass(lattice: list[Element], r_in, nturns: int = 1,
                      refpts=refpts, **kwargs)
     else:
         if any_collective:
-            warn(AtWarning('Collective PassMethod found: use single process'))
+            warn(ATWarning('Collective PassMethod found: use single process'))
         else:
-            warn(AtWarning('no parallel computation for a single particle'))
+            warn(ATWarning('no parallel computation for a single particle'))
         return _atpass(lattice, r_in, nturns=nturns, refpts=refpts, **kwargs)
 
 

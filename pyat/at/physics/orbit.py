@@ -3,7 +3,8 @@ Closed orbit related functions
 """
 import numpy
 from at.constants import clight
-from at.lattice import AtError, AtWarning, check_6d, DConstant, Orbit
+from ..exceptions import ATError, ATWarning
+from at.lattice import check_6d, DConstant, Orbit
 from at.lattice import Lattice, get_s_pos, Refpts, frequency_control
 from at.tracking import internal_lpass
 from .energy_loss import ELossMethod, get_timelag_fromU0
@@ -34,7 +35,7 @@ def _orbit_dp(ring: Lattice, dp: float = None, guess: Orbit = None, **kwargs):
     kwargs.pop('DPStep', DConstant.DPStep)
     rem = kwargs.keys()
     if len(rem) > 0:
-        raise AtError(f'Unexpected keywords for orbit_dp: {", ".join(rem)}')
+        raise ATError(f'Unexpected keywords for orbit_dp: {", ".join(rem)}')
 
     ref_in = numpy.zeros((6,)) if guess is None else numpy.copy(guess)
     ref_in[4] = 0.0 if dp is None else dp
@@ -65,7 +66,7 @@ def _orbit_dp(ring: Lattice, dp: float = None, guess: Orbit = None, **kwargs):
         keep_lattice = True
 
     if itercount == max_iterations:
-        warnings.warn(AtWarning('Maximum number of iterations reached. '
+        warnings.warn(ATWarning('Maximum number of iterations reached. '
                                 'Possible non-convergence'))
     return ref_in
 
@@ -80,7 +81,7 @@ def _orbit_dct(ring: Lattice, dct: float = None, guess: Orbit = None, **kwargs):
     kwargs.pop('DPStep', DConstant.DPStep)
     rem = kwargs.keys()
     if len(rem) > 0:
-        raise AtError(f'Unexpected keywords for orbit_dct: {", ".join(rem)}')
+        raise ATError(f'Unexpected keywords for orbit_dct: {", ".join(rem)}')
 
     ref_in = numpy.zeros((6,)) if guess is None else numpy.copy(guess)
 
@@ -115,7 +116,7 @@ def _orbit_dct(ring: Lattice, dct: float = None, guess: Orbit = None, **kwargs):
         keep_lattice = True
 
     if itercount == max_iterations:
-        warnings.warn(AtWarning('Maximum number of iterations reached. '
+        warnings.warn(ATWarning('Maximum number of iterations reached. '
                                 'Possible non-convergence'))
     return ref_in
 
@@ -189,7 +190,7 @@ def find_orbit4(ring: Lattice, dp: float = None, refpts: Refpts = None, *,
         :py:func:`find_sync_orbit`, :py:func:`find_orbit6`
     """
     if len([v for v in (dp, dct, df) if v is not None]) > 1:
-        raise AtError("For off-momentum specification, only one of "
+        raise ATError("For off-momentum specification, only one of "
                       "dp, dct and df may be specified")
     if orbit is None:
         if df is not None:
@@ -281,7 +282,7 @@ def find_sync_orbit(ring: Lattice, dct: float = None, refpts: Refpts = None, *,
         :py:func:`find_orbit4`, :py:func:`find_orbit6`
     """
     if len([v for v in (dp, dct, df) if v is not None]) > 1:
-        raise AtError("For off-momentum specification, only one of "
+        raise ATError("For off-momentum specification, only one of "
                       "dp, dct and df may be specified")
     if orbit is None:
         if df is not None:
@@ -314,7 +315,7 @@ def _orbit6(ring: Lattice, cavpts=None, guess=None, keep_lattice=False,
     method = kwargs.pop('method', ELossMethod.TRACKING)
     rem = kwargs.keys()
     if len(rem) > 0:
-        raise AtError(f'Unexpected keywords for orbit6: {", ".join(rem)}')
+        raise ATError(f'Unexpected keywords for orbit6: {", ".join(rem)}')
 
     l0 = get_s_pos(ring, len(ring))[0]
     f_rf = ring.get_rf_frequency()
@@ -362,7 +363,7 @@ def _orbit6(ring: Lattice, cavpts=None, guess=None, keep_lattice=False,
         keep_lattice = True
 
     if itercount == max_iterations:
-        warnings.warn(AtWarning('Maximum number of iterations reached. '
+        warnings.warn(ATWarning('Maximum number of iterations reached. '
                                 'Possible non-convergence'))
     return ref_in
 

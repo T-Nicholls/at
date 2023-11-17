@@ -2,7 +2,7 @@
 import numpy
 from scipy.linalg import block_diag, eig, inv, solve
 from math import pi
-from at.lattice import AtError
+from ..exceptions import ATError
 
 __all__ = ['a_matrix', 'amat', 'jmat', 'jmatswap',
            'get_tunes_damp', 'get_mode_matrices', 'symplectify']
@@ -91,7 +91,7 @@ def a_matrix(M):
     vp = vv.conj().T @ jmt
     n = -0.5j * numpy.sum(vp.T * vv, axis=0)
     if any(abs(n) < 1.0E-12):
-        raise AtError('Unstable ring')
+        raise ATError('Unstable ring')
     # Move positive before negatives
     order = rbase + (n < 0)
     vv = vv[:, order]

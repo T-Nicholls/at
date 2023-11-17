@@ -1,6 +1,6 @@
 import numpy
 from .elements import Element, _array
-from .utils import AtError
+from ..exceptions import ATError
 from typing import Optional, Union
 from enum import IntEnum
 from datetime import datetime
@@ -80,7 +80,7 @@ class VariableMultipole(Element):
         self.Periodic = kwargs.pop('Periodic', True)
         self.Mode = int(mode)
         if AmplitudeA is None and AmplitudeB is None:
-            raise AtError('Please provide at least one amplitude for A or B')
+            raise ATError('Please provide at least one amplitude for A or B')
         AmplitudeB = self._set_params(AmplitudeB, mode, 'B', **kwargs)
         AmplitudeA = self._set_params(AmplitudeA, mode, 'A', **kwargs)
         self._setmaxorder(AmplitudeA, AmplitudeB)

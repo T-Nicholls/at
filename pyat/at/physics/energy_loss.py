@@ -5,9 +5,9 @@ from typing import Optional, Tuple
 import numpy
 from scipy.optimize import least_squares
 from at.lattice import Lattice, Dipole, Wiggler, RFCavity, Refpts, EnergyLoss
-from at.lattice import check_radiation, AtError, AtWarning
-from at.lattice import QuantumDiffusion, Collective
+from at.lattice import check_radiation, QuantumDiffusion, Collective
 from at.lattice import get_bool_index, set_value_refpts
+from ..exceptions import ATError, ATWarning
 from at.constants import clight, Cgamma
 from at.tracking import internal_lpass
 
@@ -96,7 +96,7 @@ def get_energy_loss(ring: Lattice,
     elif method == ELossMethod.TRACKING:
         return ring.periodicity * tracking(ring)
     else:
-        raise AtError('Invalid method: {}'.format(method))
+        raise ATError('Invalid method: {}'.format(method))
 
 
 # noinspection PyPep8Naming
@@ -127,7 +127,7 @@ def get_timelag_fromU0(ring: Lattice,
     def singlev(values):
         vals = numpy.unique(values)
         if len(vals) > 1:
-            raise AtError('values not equal for all cavities')
+            raise ATError('values not equal for all cavities')
         return vals[0]
 
     def eq(x, freq, rfv, tl0, u0):
@@ -148,7 +148,7 @@ def get_timelag_fromU0(ring: Lattice,
     try:
         frf = singlev(freq)
         tml = singlev(tl0)
-    except AtError:
+    except ATError:
         ctmax = clight/numpy.amin(freq)/2
         tt0 = tl0[numpy.argmin(freq)]
         bounds = (-ctmax, ctmax)
@@ -164,16 +164,16 @@ def get_timelag_fromU0(ring: Lattice,
         ok = res < ts_tol
         vals = numpy.array([abs(ri.x[0]).round(decimals=6) for ri in r])
         if not numpy.any(ok):
-            raise AtError('No solution found for Phis, please check '
+            raise ATError('No solution found for Phis, please check '
                           'RF settings')
         if len(numpy.unique(vals[ok])) > 1:
-            warn(AtWarning('More than one solution found for Phis: use '
+            warn(ATWarning('More than one solution found for Phis: use '
                            'best fit, please check RF settings'))
         ts = -r[numpy.argmin(res)].x[0]
         timelag = ts+tl0
     else:
         if u0 > numpy.sum(rfv):
-            raise AtError('Not enough RF voltage: unstable ring')
+            raise ATError('Not enough RF voltage: unstable ring')
         vrf = numpy.sum(rfv)
         timelag = clight/(2*numpy.pi*frf)*numpy.arcsin(u0/vrf)
         ts = timelag - tml

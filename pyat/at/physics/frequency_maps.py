@@ -12,7 +12,7 @@ from at.tracking import patpass
 from at.physics import find_orbit
 import numpy
 from warnings import warn
-from at.lattice import AtWarning
+from ..exceptions import ATWarning
 
 
 # Jaime Coello de Portugal (JCdP) frequency analysis implementation
@@ -103,7 +103,7 @@ def fmap_parallel_track(ring,
 
     # https://github.com/atcollab/at/pull/608
     if 'ncpu' in kwargs:
-        warn(AtWarning('ncpu argument is deprecated; use pool_size instead'))
+        warn(ATWarning('ncpu argument is deprecated; use pool_size instead'))
         kwargs['pool_size'] = kwargs.pop('ncpu')
 
     if orbit is None:

@@ -4,8 +4,9 @@ import numpy
 from typing import Optional
 import functools
 from .elements import RFCavity
-from .utils import AtError, make_copy, Refpts, get_bool_index
+from .utils import make_copy, Refpts, get_bool_index
 from .lattice_object import Lattice
+from ..exceptions import ATError
 
 __all__ = ['frequency_control',
            'get_rf_frequency', 'get_rf_voltage', 'set_rf_voltage',
@@ -69,7 +70,7 @@ def _singlev(values, attr):
     """Return the single value"""
     vals = numpy.unique(values)
     if len(vals) > 1:
-        raise AtError('{0} not equal for all cavities'.format(attr))
+        raise ATError('{0} not equal for all cavities'.format(attr))
     return vals[0]
 
 
@@ -82,7 +83,7 @@ def _sumv(values, attr):
 def _fundmask(ring: Lattice, cavpts):
     freqs = numpy.array([cav.Frequency for cav in ring.select(cavpts)])
     if len(freqs) < 1:
-        raise AtError('No cavity found in the lattice')
+        raise ATError('No cavity found in the lattice')
     mask = (freqs == min(freqs))
     return mask
 
@@ -274,7 +275,7 @@ def set_cavity(ring: Lattice, Voltage: Optional[float] = None,
             try:
                 values = numpy.broadcast_to(modif[attr], (ncavs,))
             except ValueError:
-                raise AtError('set_cavity args should be either scalar or '
+                raise ATError('set_cavity args should be either scalar or '
                               'a ({0},) vector'.format(ncavs))
             for val, cavity in zip(values, ring.select(cavpts)):
                 cavity.update({attr: val})
