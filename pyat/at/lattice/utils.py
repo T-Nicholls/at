@@ -73,6 +73,78 @@ for vvv in [vv for vv in _axis_def.values()]:
     _axis_def[vvv['index']] = vvv
 
 
+def resolve_polynomB(family_name, poly_b=numpy.array([0.0, 0.0, 0.0]), k=0.0,
+                     h=0.0, **kwargs):# TODO: typehinting
+    """Ensure K & H focusing strengths are consistent with PolynomB.
+
+    Returns a PolynomB array that is consistent with all supplied quadrupolar
+    and sextupolar focusing strengths or raises :py:class:`.AtError` if two
+    non-zero inconsistent focusing strengths are supplied or if a supplied
+    focusing strength is inconsistent with PolynomB.
+
+    Parameters:
+        family_name: Name of the element
+        poly_b: Array of normal multipole components (default: [0.0, 0.0, 0.0])
+        k: Quadrupolar focusing strength (default: 0.0)
+        h: Sextupolar focusing strength (default: 0.0)
+
+    Keyword arguments:
+        K: Quadrupolar focusing strength from element attribute dict
+        H: Sextupolar focusing strength from element attribute dict
+
+    Raises:
+        AtError: if PolynomB cannot be resolved
+    """
+    error_msg = (
+        "In element {}, focusing strength {}: {} is inconsistent with focusing"
+        " strength {}: {}, please only supply one non-zero focusing strength."
+    )
+    # Ensure poly_b length is at least 3
+    if len(poly_b) < 3:
+        poly_b = numpy.pad(poly_b, (0, 3 - len(poly_b)), "constant")
+    # Resolve quadrupolar focusing strength K with PolynomB[1]
+    kwargs_k = kwargs.pop("K", 0)
+    if kwargs_k != 0:
+        if k != 0 and kwargs_k != k:
+            raise AtError(
+                error_msg.format(
+                    family_name, "K", k, "K", f"{kwargs_k} found in kwargs"
+                )
+            )
+        else:
+            k = kwargs_k
+    if k != 0:
+        if poly_b[1] != 0:
+            raise AtError(
+                error_msg.format(
+                    family_name, "K", k, "PolynomB[1]", poly_b[1]
+                )
+            )
+        else:
+            poly_b[1] = k
+    # Resolve sextupolar focusing strength H with PolynomB[1]
+    kwargs_h = kwargs.pop("H", 0)
+    if kwargs_h != 0:
+        if h != 0 and kwargs_h != h:
+            raise AtError(
+                error_msg.format(
+                    family_name, "H", h, "H", f"{kwargs_h} found in kwargs"
+                )
+            )
+        else:
+            h = kwargs_h
+    if h != 0:
+        if poly_b[2] != 0:
+            raise AtError(
+                error_msg.format(
+                    family_name, "H", h, "PolynomB[2]", poly_b[2]
+                )
+            )
+        else:
+            poly_b[2] = h
+    return poly_b
+
+
 _typ1 = "None, All, End, int, bool"
 
 _typ2 = "None, All, End, int, bool, str, Type[Element], ElementFilter"
