@@ -14,7 +14,7 @@ from abc import ABC
 from collections.abc import Generator, Iterable
 from typing import Optional
 from warnings import warn
-from ..exceptions import ATWarning
+from ..exceptions import ATWarning, ATError
 
 
 def _array(value, shape=(-1,), dtype=numpy.float64):
@@ -29,6 +29,96 @@ def _array66(value):
 
 def _nop(value):
     return value
+
+
+def _resolve_polynom(family_name, poly_a=numpy.array([0.0, 0.0, 0.0]),
+                     poly_b=numpy.array([0.0, 0.0, 0.0]), k=0.0, h=0.0, **kwargs):
+    """Ensure K & H focusing strengths are consistent with PolynomB.
+
+    Returns .......................................................................
+
+    The poly_b array that is returned is consistent with all supplied quadrupolar and
+    sextupolar focusing strengths or raises :py:class:`.ATError` if two non-zero
+    inconsistent focusing strengths are supplied or if a supplied focusing strength
+    is inconsistent with PolynomB.
+
+    Parameters:
+        family_name: Name of the element
+        poly_a: Array of skew multipole components (default: [0.0, 0.0, 0.0])
+        poly_b: Array of normal multipole components (default: [0.0, 0.0, 0.0])
+        k: Quadrupolar focusing strength (default: 0.0)
+        h: Sextupolar focusing strength (default: 0.0)
+
+    Keyword arguments:
+        K: Quadrupolar focusing strength from element attribute dict
+        H: Sextupolar focusing strength from element attribute dict
+
+    Returns:
+        poly_a (ndarray): Array of skew multipole components
+        poly_b (ndarray): Array of normal multipole components
+        max_order (int): Number of desired multipoles.
+
+    Raises:
+        ATError: if PolynomB cannot be resolved
+    """
+    kwargs_poly_b = kwargs.pop("PolynomB", None)
+    if kwargs_poly_b is not None:
+        if any(poly_b != 0.0):
+            if any(kwargs_poly_b != 0.0):
+                raise ATError("In element {}, both {} and {} supplied with non-zero values")
+            else:
+                warn("In element {}, as ")
+        else:
+            poly_b == kwargs_poly_b
+
+    error_msg = (
+        "In element {}, focusing strength {}: {} is inconsistent with focusing"
+        " strength {}: {}, please only supply one non-zero focusing strength."
+    )
+    # Ensure poly_b length is at least 3
+    if len(poly_b) < 3:
+        poly_b = numpy.pad(poly_b, (0, 3 - len(poly_b)), "constant")
+    # Resolve quadrupolar focusing strength K with PolynomB[1]
+    kwargs_k = kwargs.pop("K", 0)
+    if kwargs_k != 0:
+        if k != 0 and kwargs_k != k:
+            raise ATError(
+                error_msg.format(
+                    family_name, "K", k, "K", f"{kwargs_k} found in kwargs"
+                )
+            )
+        else:
+            k = kwargs_k
+    if k != 0:
+        if poly_b[1] != 0:
+            raise ATError(
+                error_msg.format(
+                    family_name, "K", k, "PolynomB[1]", poly_b[1]
+                )
+            )
+        else:
+            poly_b[1] = k
+    # Resolve sextupolar focusing strength H with PolynomB[1]
+    kwargs_h = kwargs.pop("H", 0)
+    if kwargs_h != 0:
+        if h != 0 and kwargs_h != h:
+            raise ATError(
+                error_msg.format(
+                    family_name, "H", h, "H", f"{kwargs_h} found in kwargs"
+                )
+            )
+        else:
+            h = kwargs_h
+    if h != 0:
+        if poly_b[2] != 0:
+            raise ATError(
+                error_msg.format(
+                    family_name, "H", h, "PolynomB[2]", poly_b[2]
+                )
+            )
+        else:
+            poly_b[2] = h
+    return poly_a, poly_b, len(poly_b) - numpy.argmax(numpy.flip(poly_b)) - 1
 
 
 class LongtMotion(ABC):
@@ -628,7 +718,7 @@ class ThinMultipole(Element):
             k = kwargs.pop("K")
             if ord_b < 1:
                 ord_b = 1
-            if poly_b[1] != k:
+            if poly_b[1] != k and k != 0.0:
                 warn(
                     ATWarning(
                         f"In element {family_name}, focusing strength K: {k} is "
@@ -639,7 +729,7 @@ class ThinMultipole(Element):
             h = kwargs.pop("H")
             if ord_b < 2:
                 ord_b = 2
-            if poly_b[2] != h:
+            if poly_b[2] != h and h != 0.0:
                 warn(
                     ATWarning(
                         f"In element {family_name}, focusing strength H: {h} is "

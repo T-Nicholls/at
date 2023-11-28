@@ -1,9 +1,11 @@
 import pytest
 import numpy
+import warnings
 from at import element_track, lattice_track
 from at import lattice_pass, internal_lpass
 from at import element_pass, internal_epass
 from at import elements
+from at import ATWarning
 from numpy.testing import assert_equal
 
 
@@ -403,3 +405,106 @@ def test_exit_entrance():
     for kin, kout in zip(q._entrance_fields, q._exit_fields):
         assert_equal(kin.replace('Entrance', ''). replace('1', ''),
                      kout.replace('Exit', '').replace('2', ''))
+
+
+def test_ThinMultipole_creation_inconsistent_focusing_strengths_warns_correctly():
+    # warns
+    with pytest.warns(ATWarning):
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"K": 1.0})
+    # warns
+    with pytest.warns(ATWarning):
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"H": 1.0})
+    # warns twice
+    with pytest.warns(ATWarning) as record:
+        elements.ThinMultipole(
+            "TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"H": 1.0, "K": 1.0}
+        )
+    assert len(record) == 2
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"K": 0.0})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"H": 0.0})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 1.0, 0, 0], **{"K": 1.0})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 1.0, 0], **{"H": 1.0})
+
+
+def test_Dipole_creation_inconsistent_focusing_strengths_warns_correctly():
+    # warns
+    with pytest.warns(ATWarning):
+        elements.Dipole("DP1", 1.0, k=1.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Dipole("DP1", 1.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Dipole("DP1", 1.0, k=1.0, **{"PolynomB": [0, 1.0, 0, 0]})
+
+
+def test_Quadrupole_creation_inconsistent_focusing_strengths_warns_correctly():
+    # warns
+    with pytest.warns(ATWarning):
+        elements.Quadrupole("QF1", 1.0, k=1.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Quadrupole("QF1", 1.0, k=0.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Quadrupole("QF1", 1.0, k=1.0, **{"PolynomB": [0, 1.0, 0, 0]})
+
+
+def test_Sextupole_creation_inconsistent_focusing_strengths_warns_correctly():
+    # warns
+    with pytest.warns(ATWarning):
+        elements.Sextupole("SD1", 1.0, h=1.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Sextupole("SD1", 1.0, h=0.0, **{"PolynomB": [0, 0, 0, 0]})
+    # doesn't warn
+    with warnings.catch_warnings():
+        warnings.simplefilter("error")
+        elements.Sextupole("SD1", 1.0, h=1.0, **{"PolynomB": [0, 0, 1.0, 0]})
+
+
+def test_ThinMultipole_creation_higher_k_or_h_than_PolynomB_updates_MaxOrder():
+    # updates
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        tm = elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"K": 1.0})
+    assert tm.MaxOrder == 1
+    # updates
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        tm = elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"H": 1.0})
+    assert tm.MaxOrder == 2
+    # updates with highest
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        tm = elements.ThinMultipole(
+            "TM1", [0, 0, 0, 0], [0, 0, 0, 0], **{"K": 1.0, "H": 1.0}
+        )
+    assert tm.MaxOrder == 2
+    # doesn't update
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        tm = elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 1.0], **{"K": 1.0})
+    assert tm.MaxOrder == 3
+    # doesn't update
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        tm = elements.ThinMultipole("TM1", [0, 0, 0, 0], [0, 0, 0, 1.0], **{"H": 1.0})
+    assert tm.MaxOrder == 3
