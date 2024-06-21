@@ -1,161 +1,202 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>at.physics.linear &#8212; Accelerator Toolbox 0.4.1 documentation</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/documentation_options.js?v=11bb8181"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/at/physics/linear';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
 
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
-    
-    
-  
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
 
 <a class="navbar-brand logo" href="../../../index.html">
-
   
   
   
   
   
+    
+    
+      
+    
+    
+    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>`);</script>
   
   
-
-  
-    <img src="../../../_static/AT.png" class="logo__image only-light" alt="Logo image">
-    <img src="../../../_static/AT.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
+</a></div>
     
   </div>
-
   
   <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
+    
+    <div class="me-auto navbar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../common/indx.html">
-                        AT basics
-                    </a>
-                </li>
-                
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../p/index.html">
-                        Python
-                    </a>
-                </li>
-                
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../m/index.html">
-                        Matlab
-                    </a>
-                </li>
-                
-    </ul>
-</nav>
-      </div>
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
+  </ul>
+</nav></div>
       
     </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
 
-    <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-      </div>
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
       
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -164,92 +205,103 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
-      </div>
+</ul></div>
       
     </div>
+    
   </div>
+  
+  
+    <div class="navbar-persistent--mobile">
 
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-  </div>
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
 </div>
-  </nav>
+
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
+        
+      
       <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
       <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../common/indx.html">
-                        AT basics
-                    </a>
-                </li>
-                
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../p/index.html">
-                        Python
-                    </a>
-                </li>
-                
 
-                <li class="nav-item">
-                    <a class="nav-link" href="../../../m/index.html">
-                        Matlab
-                    </a>
-                </li>
-                
-    </ul>
-</nav>
-      </div>
-      
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="../../../m/index.html">
+    Matlab
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
       </div>
     
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
 
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -258,38 +310,68 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
+</ul></div>
+        
       </div>
-      
-    </div>
     
   </div>
-
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
-      <main class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-            </div>
-            
-            
-            <article class="bd-article" role="main">
+          <div class="bd-content">
+            <div class="bd-article-container">
               
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">at.physics.linear</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <h1>Source code for at.physics.linear</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Coupled or non-coupled 4x4 linear motion</span>
@@ -402,7 +484,7 @@
         <span class="n">beta</span> <span class="o">=</span> <span class="n">m22</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">sinmu</span>
         <span class="k">return</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">cosmu</span> <span class="o">+</span> <span class="n">sinmu</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>          <span class="c1"># Unstable motion</span>
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
 
 <span class="c1"># noinspection PyShadowingNames,PyPep8Naming</span>
@@ -420,7 +502,7 @@
     <span class="k">except</span> <span class="n">AtError</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">AtWarning</span><span class="p">(</span><span class="s1">&#39;Unstable ring&#39;</span><span class="p">))</span>
         <span class="n">tunes</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>
-        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">tunes</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
     <span class="k">return</span> <span class="n">tunes</span>
 
 
@@ -802,7 +884,7 @@
                          <span class="p">(</span><span class="s1">&#39;s_pos&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)]</span>
         <span class="n">data0</span> <span class="o">=</span> <span class="p">(</span><span class="n">d0</span><span class="p">,</span> <span class="n">orb0</span><span class="p">,</span> <span class="n">mt</span><span class="p">,</span> <span class="n">get_s_pos</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ring</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">datas</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">orbs</span><span class="p">,</span> <span class="n">ms</span><span class="p">,</span> <span class="n">spos</span><span class="p">)</span>
-        <span class="n">damping_times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">damping_times</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
     <span class="k">if</span> <span class="n">get_w</span><span class="p">:</span>
         <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span> <span class="o">+</span> <span class="n">wtype</span>
@@ -816,7 +898,7 @@
         <span class="n">deltap</span> <span class="o">=</span> <span class="n">o0up</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">o0dn</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
         <span class="n">chrom</span> <span class="o">=</span> <span class="p">(</span><span class="n">tunesup</span> <span class="o">-</span> <span class="n">tunesdn</span><span class="p">)</span> <span class="o">/</span> <span class="n">deltap</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">chrom</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">NaN</span>
+        <span class="n">chrom</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 
     <span class="n">beamdata</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">tunes</span><span class="p">,</span> <span class="n">chrom</span><span class="p">,</span> <span class="n">damping_times</span><span class="p">),</span>
                            <span class="n">dtype</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;tune&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="p">(</span><span class="n">dms</span><span class="p">,)),</span>
@@ -834,7 +916,9 @@
     <span class="k">return</span> <span class="n">elemdata0</span><span class="p">,</span> <span class="n">beamdata</span><span class="p">,</span> <span class="n">elemdata</span>
 
 
-<div class="viewcode-block" id="linopt2"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt2">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<div class="viewcode-block" id="linopt2">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt2">[docs]</a>
+<span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">linopt2</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of an uncoupled lattice</span>
 
@@ -941,7 +1025,10 @@
     <span class="k">return</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">_analyze2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="linopt4"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt4">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<div class="viewcode-block" id="linopt4">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt4">[docs]</a>
+<span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">linopt4</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a H/V coupled lattice</span>
 
@@ -1052,7 +1139,10 @@
     <span class="k">return</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">_analyze4</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="linopt6"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt6">[docs]</a><span class="nd">@frequency_control</span>
+
+<div class="viewcode-block" id="linopt6">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.linopt6">[docs]</a>
+<span class="nd">@frequency_control</span>
 <span class="k">def</span> <span class="nf">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a fully coupled lattice using normal modes</span>
 
@@ -1172,6 +1262,7 @@
     <span class="k">return</span> <span class="n">_linopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">_analyze6</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
 
+
 <span class="k">def</span> <span class="nf">linopt_auto</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a convenience function to automatically switch to the faster</span>
@@ -1203,7 +1294,9 @@
         <span class="k">return</span> <span class="n">linopt6</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="get_optics"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_optics">[docs]</a><span class="k">def</span> <span class="nf">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<div class="viewcode-block" id="get_optics">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_optics">[docs]</a>
+<span class="k">def</span> <span class="nf">get_optics</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
                <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">linopt6</span><span class="p">,</span>
                <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1274,6 +1367,7 @@
 <span class="sd">        See :py:func:`linopt2`, :py:func:`linopt4`, :py:func:`linopt6`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">refpts</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
 
 
 <span class="c1"># noinspection PyPep8Naming</span>
@@ -1362,8 +1456,10 @@
 
 
 <span class="c1"># noinspection PyPep8Naming</span>
-<div class="viewcode-block" id="avlinopt"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.avlinopt">[docs]</a><span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">avlinopt</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">refpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="avlinopt">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.avlinopt">[docs]</a>
+<span class="nd">@check_6d</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">avlinopt</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">dp</span><span class="p">,</span> <span class="n">refpts</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Linear analysis of a lattice with average values</span>
 
 <span class="sd">    :py:func:`avlinopt` returns average beta, mu, dispersion over the lattice</span>
@@ -1417,10 +1513,10 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        elemdata:   Linear optics at the points refered to by *refpts*,</span>
 <span class="sd">          if refpts is :py:obj:`None` an empty lindata structure is returned.</span>
-<span class="sd">        avebeta:    Average beta functions [:math:`\hat{\beta_x},\hat{\beta_y}`]</span>
-<span class="sd">          at *refpts*</span>
-<span class="sd">        avemu:      Average phase advances [:math:`\hat{\mu_x},\hat{\mu_y}`]</span>
-<span class="sd">          at *refpts*</span>
+<span class="sd">        avebeta:    Average beta functions</span>
+<span class="sd">          [:math:`\hat{\beta_x},\hat{\beta_y}`] at *refpts*</span>
+<span class="sd">        avemu:      Average phase advances</span>
+<span class="sd">          [:math:`\hat{\mu_x},\hat{\mu_y}`] at *refpts*</span>
 <span class="sd">        avedisp:    Average dispersion [:math:`\hat{\eta_x}, \hat{\eta&#39;_x},</span>
 <span class="sd">          \hat{\eta_y}, \hat{\eta&#39;_y}`] at *refpts*</span>
 <span class="sd">        avespos:    Average s position at *refpts*</span>
@@ -1435,30 +1531,115 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">PolynomB</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+        <span class="k">return</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">get_sext_strength</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">PolynomB</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
             <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="k">return</span> <span class="n">k</span>
 
-    <span class="k">def</span> <span class="nf">betadrift</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">beta1</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
-        <span class="n">gamma0</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha0</span> <span class="o">*</span> <span class="n">alpha0</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta0</span>
-        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">beta0</span> <span class="o">+</span> <span class="n">beta1</span><span class="p">)</span> <span class="o">-</span> <span class="n">gamma0</span> <span class="o">*</span> <span class="n">lg</span> <span class="o">*</span> <span class="n">lg</span> <span class="o">/</span> <span class="mi">6</span>
+    <span class="k">def</span> <span class="nf">get_roll</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">R2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">return</span> <span class="n">k</span>
 
-    <span class="k">def</span> <span class="nf">betafoc</span><span class="p">(</span><span class="n">beta1</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">,</span> <span class="n">alpha1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
-        <span class="n">gamma1</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha1</span> <span class="o">*</span> <span class="n">alpha1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta1</span>
-        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">gamma1</span> <span class="o">+</span> <span class="n">k2</span> <span class="o">*</span> <span class="n">beta1</span><span class="p">)</span> <span class="o">*</span> <span class="n">lg</span> <span class="o">+</span> <span class="n">alpha1</span> <span class="o">-</span> <span class="n">alpha0</span><span class="p">)</span> <span class="o">/</span> <span class="n">k2</span> <span class="o">/</span> <span class="n">lg</span>
+    <span class="k">def</span> <span class="nf">get_dx</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="p">(</span><span class="n">elem</span><span class="o">.</span><span class="n">T2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">elem</span><span class="o">.</span><span class="n">T1</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mf">2.0</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="n">k</span>
 
-    <span class="k">def</span> <span class="nf">dispfoc</span><span class="p">(</span><span class="n">dispp0</span><span class="p">,</span> <span class="n">dispp1</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">dispp0</span> <span class="o">-</span> <span class="n">dispp1</span><span class="p">)</span> <span class="o">/</span> <span class="n">k2</span> <span class="o">/</span> <span class="n">lg</span>
+    <span class="k">def</span> <span class="nf">get_bendingangle</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">BendingAngle</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="n">k</span>
 
+    <span class="k">def</span> <span class="nf">get_e1</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">EntranceAngle</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">get_fint</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">FringeInt1</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">get_gap</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">FullGap</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">):</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">return</span> <span class="n">k</span>
+
+    <span class="k">def</span> <span class="nf">sini</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">L</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+                             <span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">L</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span>
+                              <span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">r</span>
+
+    <span class="k">def</span> <span class="nf">cosi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">L</span><span class="p">[</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">L</span><span class="p">[</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">r</span>
+
+    <span class="k">def</span> <span class="nf">betadrift</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
+        <span class="n">gamma0</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha0</span> <span class="o">*</span> <span class="n">alpha0</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta0</span>
+        <span class="k">return</span> <span class="n">beta0</span><span class="o">-</span><span class="n">alpha0</span><span class="o">*</span><span class="n">lg</span><span class="o">+</span><span class="n">gamma0</span><span class="o">*</span><span class="n">lg</span><span class="o">*</span><span class="n">lg</span><span class="o">/</span><span class="mi">3</span>
+
+    <span class="k">def</span> <span class="nf">betafoc</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">alpha0</span><span class="p">,</span> <span class="n">kk</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
+        <span class="n">gamma0</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha0</span> <span class="o">*</span> <span class="n">alpha0</span> <span class="o">+</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">beta0</span>
+        <span class="k">return</span> <span class="p">((</span><span class="n">beta0</span><span class="o">+</span><span class="n">gamma0</span><span class="o">/</span><span class="n">kk</span><span class="p">)</span><span class="o">*</span><span class="n">lg</span> <span class="o">+</span>
+                <span class="p">(</span><span class="n">beta0</span><span class="o">-</span><span class="n">gamma0</span><span class="o">/</span><span class="n">kk</span><span class="p">)</span><span class="o">*</span><span class="n">sini</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">lg</span><span class="p">)</span><span class="o">/</span><span class="mf">2.0</span> <span class="o">+</span>
+                <span class="p">(</span><span class="n">cosi</span><span class="p">(</span><span class="n">kk</span><span class="p">,</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">lg</span><span class="p">)</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="n">alpha0</span><span class="o">/</span><span class="n">kk</span><span class="p">)</span><span class="o">/</span><span class="n">lg</span><span class="o">/</span><span class="mf">2.0</span>
+
+    <span class="k">def</span> <span class="nf">dispfoc</span><span class="p">(</span><span class="n">disp0</span><span class="p">,</span> <span class="n">ir</span><span class="p">,</span> <span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">):</span>
+        <span class="n">avedisp</span> <span class="o">=</span> <span class="n">disp0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">avedisp</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">disp0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">sini</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span> <span class="o">+</span>
+                            <span class="n">disp0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">cosi</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span><span class="o">/</span><span class="n">k2</span> <span class="o">+</span>
+                            <span class="n">ir</span><span class="o">*</span><span class="p">(</span><span class="n">lg</span><span class="o">-</span><span class="n">sini</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span><span class="o">/</span><span class="n">k2</span><span class="p">)</span><span class="o">/</span><span class="n">lg</span>
+        <span class="n">avedisp</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">disp0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">sini</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span> <span class="o">-</span>
+                            <span class="n">disp0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">cosi</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span> <span class="o">+</span>
+                            <span class="n">ir</span><span class="o">*</span><span class="p">(</span><span class="n">lg</span><span class="o">-</span><span class="n">cosi</span><span class="p">(</span><span class="n">k2</span><span class="p">,</span> <span class="n">lg</span><span class="p">))</span><span class="o">/</span><span class="n">k2</span><span class="p">)</span><span class="o">/</span><span class="n">lg</span>
+        <span class="k">return</span> <span class="n">avedisp</span>
+
+    <span class="c1"># selected list</span>
     <span class="n">boolrefs</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="p">)</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">el</span><span class="o">.</span><span class="n">Length</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]])</span>
-    <span class="n">strength</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_strength</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]])</span>
+    <span class="n">ring_selected</span> <span class="o">=</span> <span class="n">ring</span><span class="p">[</span><span class="n">refpts</span><span class="p">]</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">el</span><span class="o">.</span><span class="n">Length</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_strength</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">sext_strength</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_sext_strength</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
+                                 <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">roll</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_roll</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">ba</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_bendingangle</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">e1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_e1</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">Fint</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_fint</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">gap</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_gap</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">get_dx</span><span class="p">(</span><span class="n">el</span><span class="p">)</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">ring_selected</span><span class="p">])</span>
+    <span class="n">irho</span> <span class="o">=</span> <span class="n">ba</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">d_csi</span> <span class="o">=</span> <span class="n">ba</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># whole ring list</span>
     <span class="n">longelem</span> <span class="o">=</span> <span class="n">get_bool_index</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">longelem</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">longelem</span><span class="p">[</span><span class="n">boolrefs</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">L</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
 
     <span class="n">shorti_refpts</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="n">longelem</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">boolrefs</span>
     <span class="n">longi_refpts</span> <span class="o">=</span> <span class="n">longelem</span> <span class="o">&amp;</span> <span class="n">boolrefs</span>
     <span class="n">longf_refpts</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">longi_refpts</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
     <span class="n">all_refs</span> <span class="o">=</span> <span class="n">shorti_refpts</span> <span class="o">|</span> <span class="n">longi_refpts</span> <span class="o">|</span> <span class="n">longf_refpts</span>
     <span class="n">_</span><span class="p">,</span> <span class="n">bd</span><span class="p">,</span> <span class="n">d_all</span> <span class="o">=</span> <span class="n">linopt4</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="n">refpts</span><span class="o">=</span><span class="n">all_refs</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="n">dp</span><span class="p">,</span>
                            <span class="n">get_chrom</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1468,36 +1649,49 @@
     <span class="n">avemu</span> <span class="o">=</span> <span class="n">lindata</span><span class="o">.</span><span class="n">mu</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">avedisp</span> <span class="o">=</span> <span class="n">lindata</span><span class="o">.</span><span class="n">dispersion</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">aves</span> <span class="o">=</span> <span class="n">lindata</span><span class="o">.</span><span class="n">s_pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">ClosedOrbit</span> <span class="o">=</span> <span class="n">lindata</span><span class="o">.</span><span class="n">closed_orbit</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="n">di</span> <span class="o">=</span> <span class="n">d_all</span><span class="p">[</span><span class="n">longi_refpts</span><span class="p">[</span><span class="n">all_refs</span><span class="p">]]</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">d_all</span><span class="p">[</span><span class="n">longf_refpts</span><span class="p">[</span><span class="n">all_refs</span><span class="p">]]</span>
 
-    <span class="n">long</span> <span class="o">=</span> <span class="p">(</span><span class="n">length</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">kfoc</span> <span class="o">=</span> <span class="p">(</span><span class="n">strength</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">foc</span> <span class="o">=</span> <span class="n">long</span> <span class="o">&amp;</span> <span class="n">kfoc</span>
-    <span class="n">nofoc</span> <span class="o">=</span> <span class="n">long</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">kfoc</span><span class="p">)</span>
-    <span class="n">K2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">strength</span><span class="p">[</span><span class="n">foc</span><span class="p">],</span> <span class="o">-</span><span class="n">strength</span><span class="p">[</span><span class="n">foc</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">fff</span> <span class="o">=</span> <span class="n">foc</span><span class="p">[</span><span class="n">long</span><span class="p">]</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">length</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">b_long</span> <span class="o">=</span> <span class="p">(</span><span class="n">L</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">b_foc</span> <span class="o">=</span> <span class="p">(</span><span class="n">K</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">b_foc_long</span> <span class="o">=</span> <span class="n">b_long</span> <span class="o">&amp;</span> <span class="n">b_foc</span>
+    <span class="n">b_drf</span> <span class="o">=</span> <span class="n">b_long</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">b_foc</span><span class="p">)</span>
 
-    <span class="n">avemu</span><span class="p">[</span><span class="n">long</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">mu</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span>
-    <span class="n">aves</span><span class="p">[</span><span class="n">long</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">s_pos</span> <span class="o">+</span> <span class="n">di</span><span class="o">.</span><span class="n">s_pos</span><span class="p">)</span>
-    <span class="n">avebeta</span><span class="p">[</span><span class="n">nofoc</span><span class="p">]</span> <span class="o">=</span> \
-        <span class="n">betadrift</span><span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="o">~</span><span class="n">fff</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="o">~</span><span class="n">fff</span><span class="p">],</span> <span class="n">di</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="o">~</span><span class="n">fff</span><span class="p">],</span> <span class="n">length</span><span class="p">[</span><span class="n">nofoc</span><span class="p">])</span>
-    <span class="n">avebeta</span><span class="p">[</span><span class="n">foc</span><span class="p">]</span> <span class="o">=</span> \
-        <span class="n">betafoc</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="n">fff</span><span class="p">],</span> <span class="n">di</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">fff</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">fff</span><span class="p">],</span> <span class="n">K2</span><span class="p">,</span> <span class="n">length</span><span class="p">[</span><span class="n">foc</span><span class="p">])</span>
-    <span class="n">avedisp</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span> <span class="o">=</span> \
-        <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">-</span> <span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span> <span class="o">/</span> <span class="n">length</span><span class="p">[</span><span class="n">long</span><span class="p">]</span>
+    <span class="n">dx0</span> <span class="o">=</span> <span class="n">ClosedOrbit</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">dx0</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="o">.</span><span class="n">closed_orbit</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">K</span><span class="o">*</span><span class="n">roll</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">sext_strength</span><span class="o">*</span><span class="p">(</span><span class="n">dx0</span><span class="o">-</span><span class="n">dx</span><span class="p">)</span>
+
+    <span class="n">K2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">K</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">],</span> <span class="o">-</span><span class="n">K</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">fff</span> <span class="o">=</span> <span class="n">b_foc_long</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span>
+    <span class="n">irho</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">=</span> <span class="n">ba</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span><span class="o">/</span><span class="n">L</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span>
+    <span class="n">d_csi</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">=</span> <span class="n">ba</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">gap</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span><span class="o">*</span><span class="n">Fint</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">*</span>
+                                <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">numpy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">e1</span><span class="p">[</span><span class="n">b_long</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span>
+                                <span class="n">numpy</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">e1</span><span class="p">[</span><span class="n">b_long</span><span class="p">])</span><span class="o">/</span><span class="n">L</span><span class="p">[</span><span class="n">b_long</span><span class="p">])</span>
+    <span class="n">L2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">L</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">irho</span> <span class="o">=</span> <span class="n">irho</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">L</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">avemu</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">mu</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span>
+    <span class="n">aves</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">s_pos</span> <span class="o">+</span> <span class="n">di</span><span class="o">.</span><span class="n">s_pos</span><span class="p">)</span>
+    <span class="n">avebeta</span><span class="p">[</span><span class="n">b_drf</span><span class="p">]</span> <span class="o">=</span> <span class="n">betadrift</span><span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="o">~</span><span class="n">fff</span><span class="p">],</span> <span class="n">di</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="o">~</span><span class="n">fff</span><span class="p">],</span> <span class="n">L</span><span class="p">[</span><span class="n">b_drf</span><span class="p">])</span>
+    <span class="n">avebeta</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">]</span> <span class="o">=</span> <span class="n">betafoc</span><span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">beta</span><span class="p">[</span><span class="n">fff</span><span class="p">],</span> <span class="n">di</span><span class="o">.</span><span class="n">alpha</span><span class="p">[</span><span class="n">fff</span><span class="p">],</span> <span class="n">K2</span><span class="p">,</span> <span class="n">L2</span><span class="p">)</span>
+    <span class="n">avedisp</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">b_long</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">-</span>
+                                          <span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span> <span class="o">/</span> <span class="n">L</span><span class="p">[</span><span class="n">b_long</span><span class="p">]</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="o">~</span><span class="n">fff</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
-    <span class="n">avedisp</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">nofoc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span> <span class="o">=</span> <span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span>
+    <span class="n">avedisp</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">b_drf</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span> <span class="o">=</span> <span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span>
                                          <span class="n">df</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.5</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">fff</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-    <span class="n">avedisp</span><span class="p">[</span><span class="n">numpy</span><span class="o">.</span><span class="n">ix_</span><span class="p">(</span><span class="n">foc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])]</span> <span class="o">=</span> \
-        <span class="n">dispfoc</span><span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">K2</span><span class="p">,</span> <span class="n">length</span><span class="p">[</span><span class="n">foc</span><span class="p">])</span>
+    <span class="n">avedisp</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">dispfoc</span><span class="p">(</span><span class="n">di</span><span class="o">.</span><span class="n">dispersion</span><span class="p">[</span><span class="n">fff</span><span class="p">,</span> <span class="p">:],</span>
+                                     <span class="n">irho</span><span class="p">[</span><span class="n">b_foc_long</span><span class="p">],</span> <span class="n">K2</span><span class="p">,</span> <span class="n">L2</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">lindata</span><span class="p">,</span> <span class="n">avebeta</span><span class="p">,</span> <span class="n">avemu</span><span class="p">,</span> <span class="n">avedisp</span><span class="p">,</span> <span class="n">aves</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">tune</span><span class="p">,</span> <span class="n">bd</span><span class="o">.</span><span class="n">chromaticity</span></div>
 
 
-<div class="viewcode-block" id="get_tune"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a><span class="nd">@frequency_control</span>
+
+<div class="viewcode-block" id="get_tune">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_tune">[docs]</a>
+<span class="nd">@frequency_control</span>
 <span class="k">def</span> <span class="nf">get_tune</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
              <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
              <span class="n">orbit</span><span class="p">:</span> <span class="n">Orbit</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1531,7 +1725,7 @@
 <span class="sd">        fmin (float):           Lower tune bound. Default: 0</span>
 <span class="sd">        fmax (float):           Upper tune bound. Default: 1</span>
 <span class="sd">        hann (bool):            Turn on Hanning window.</span>
-<span class="sd">          Default: :py:obj:`False`. Work only for ``&#39;fft&#39;`` </span>
+<span class="sd">          Default: :py:obj:`False`. Work only for ``&#39;fft&#39;``</span>
 <span class="sd">        get_integer(bool):   Turn on integer tune (slower)</span>
 
 <span class="sd">    Returns:</span>
@@ -1552,7 +1746,7 @@
         <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">p2</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
     <span class="n">get_integer</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;get_integer&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">get_integer</span><span class="p">:</span>
-        <span class="k">assert</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>\
+        <span class="k">assert</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span> \
            <span class="s1">&#39;Integer tune only accessible with method=linopt&#39;</span>
     <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="s1">&#39;linopt&#39;</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">get_integer</span><span class="p">:</span>
@@ -1571,7 +1765,10 @@
     <span class="k">return</span> <span class="n">tunes</span></div>
 
 
-<div class="viewcode-block" id="get_chrom"><a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a><span class="nd">@frequency_control</span>
+
+<div class="viewcode-block" id="get_chrom">
+<a class="viewcode-back" href="../../../p/api/at.physics.linear.html#at.physics.linear.get_chrom">[docs]</a>
+<span class="nd">@frequency_control</span>
 <span class="k">def</span> <span class="nf">get_chrom</span><span class="p">(</span><span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;linopt&#39;</span><span class="p">,</span>
               <span class="n">dp</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">dct</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
               <span class="n">cavpts</span><span class="p">:</span> <span class="n">Refpts</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -1643,6 +1840,7 @@
     <span class="k">return</span> <span class="p">(</span><span class="n">tune_up</span> <span class="o">-</span> <span class="n">tune_down</span><span class="p">)</span> <span class="o">/</span> <span class="n">dp_step</span></div>
 
 
+
 <span class="n">Lattice</span><span class="o">.</span><span class="n">linopt</span> <span class="o">=</span> <span class="n">linopt</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">linopt2</span> <span class="o">=</span> <span class="n">linopt2</span>
 <span class="n">Lattice</span><span class="o">.</span><span class="n">linopt4</span> <span class="o">=</span> <span class="n">linopt4</span>
@@ -1653,75 +1851,74 @@
 <span class="n">Lattice</span><span class="o">.</span><span class="n">get_chrom</span> <span class="o">=</span> <span class="n">get_chrom</span>
 </pre></div>
 
-            </article>
-            
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
-            </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
+                </article>
               
-<div class="toc-item">
-  
-<div id="searchbox"></div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
 </div>
-
-<div class="toc-item">
-  
-</div>
-
-<div class="toc-item">
-  
-</div>
-
+                </footer>
+              
             </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+            
+            
+              
             
           </div>
-        </footer>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-  <footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-  <div class="footer-item">
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-<p class="copyright">
+      © Copyright 2022, ATCollab.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-    &copy; Copyright 2022, ATCollab.<br>
-
-</p>
-
-  </div>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
   
-  <div class="footer-item">
-    
-<p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
-</p>
-
-  </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
+</p></div>
+      
+    </div>
   
 </div>
+
   </footer>
   </body>
 </html>

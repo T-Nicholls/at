@@ -1,161 +1,202 @@
 
 <!DOCTYPE html>
 
-<html lang="en">
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Index &#8212; Accelerator Toolbox 0.4.1 documentation</title>
-  <script>
+  
+  
+  
+  <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1e1de1a1873e13ef5536" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/6.1.2/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/custom_at.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom_at.css?v=bc6ab313" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=11bb8181"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=fd10adb8"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="docsearch:language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
-  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
     <div class="search-button__search-container">
-      
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-    </div>
+</form></div>
   </div>
 
-  
-  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
-      <span class="fa-solid fa-bars"></span>
-  </label>
-  <div id="navbar-start">
-    
-    
-  
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
 
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
 
 <a class="navbar-brand logo" href="index.html">
-
   
   
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
+    <script>document.write(`<img src="_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>`);</script>
   
   
-
-  
-    <img src="_static/AT.png" class="logo__image only-light" alt="Logo image">
-    <img src="_static/AT.png" class="logo__image only-dark" alt="Logo image">
-  
-  
-</a>
+</a></div>
     
   </div>
-
   
   <div class="col-lg-9 navbar-header-items">
-    <div id="navbar-center" class="mr-auto">
+    
+    <div class="me-auto navbar-header-items__center">
       
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
-        
-                <li class="nav-item">
-                    <a class="nav-link" href="common/indx.html">
-                        AT basics
-                    </a>
-                </li>
-                
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="p/index.html">
-                        Python
-                    </a>
-                </li>
-                
 
-                <li class="nav-item">
-                    <a class="nav-link" href="m/index.html">
-                        Matlab
-                    </a>
-                </li>
-                
-    </ul>
-</nav>
-      </div>
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="m/index.html">
+    Matlab
+  </a>
+</li>
+
+  </ul>
+</nav></div>
       
     </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
 
-    <div id="navbar-end">
-      <div class="navbar-end-item navbar-end__search-button-container">
-        
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-      </div>
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
       
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
       
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -164,92 +205,103 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
-      </div>
+</ul></div>
       
     </div>
+    
   </div>
+  
+  
+    <div class="navbar-persistent--mobile">
 
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
 
   
-  <div class="search-button-container--mobile">
-<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" data-toggle="tooltip">
-  <i class="fa-solid fa-magnifying-glass"></i>
-</button>
-  </div>
-
-  
-  <label class="sidebar-toggle secondary-toggle" for="__secondary">
-      <span class="fa-solid fa-outdent"></span>
-  </label>
-  
-
 </div>
-  </nav>
+
+    </header>
   
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
+      
+      
+        
+      
       <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
+
   
   <div class="sidebar-header-items sidebar-primary__section">
     
     
       <div class="sidebar-header-items__center">
-      
-      <div class="navbar-center-item">
-        <nav class="navbar-nav">
-    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
-        Site Navigation
-    </p>
-    <ul id="navbar-main-elements" class="navbar-nav">
         
-                <li class="nav-item">
-                    <a class="nav-link" href="common/indx.html">
-                        AT basics
-                    </a>
-                </li>
-                
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="common/indx.html">
+    AT basics
+  </a>
+</li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="p/index.html">
-                        Python
-                    </a>
-                </li>
-                
 
-                <li class="nav-item">
-                    <a class="nav-link" href="m/index.html">
-                        Matlab
-                    </a>
-                </li>
-                
-    </ul>
-</nav>
-      </div>
-      
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="p/index.html">
+    Python
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="m/index.html">
+    Matlab
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
       </div>
     
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
 
-    
-    
-    <div class="sidebar-header-items__end">
-      
-      <div class="navbar-end-item">
-        <span class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" data-toggle="tooltip">
-    <a class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></a>
-    <a class="theme-switch" data-mode="dark"><i class="fa-regular fa-moon"></i></a>
-    <a class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></a>
-</span>
-      </div>
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
         <li class="nav-item">
           
           
@@ -258,38 +310,39 @@
           
           
           
-          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-toggle="tooltip"><span><i class="fa-brands fa-square-github"></i></span>
-            <label class="sr-only">GitHub</label></a>
+          
+          <a href="https://github.com/atcollab/at" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
         </li>
-      </ul>
+</ul></div>
+        
       </div>
-      
-    </div>
     
   </div>
-
   
-
   
-  <div class="sidebar-end-items sidebar-primary__section">
-    <div class="sidebar-end-items__item">
-    </div>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
 
       </div>
-      <main class="bd-main">
+      
+      <main id="main-content" class="bd-main" role="main">
         
         
-        <div class="bd-content">
-          <div class="bd-article-container">
-            
-            <div class="bd-header-article">
-                
-            </div>
-            
-            
-            <article class="bd-article" role="main">
+          <div class="bd-content">
+            <div class="bd-article-container">
               
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
 
 <h1 id="index">Index</h1>
 
@@ -484,6 +537,13 @@
 </li>
       </ul></li>
       <li>
+    at.lattice.lattice_variables
+
+      <ul>
+        <li><a href="p/api/at.lattice.lattice_variables.html#module-at.lattice.lattice_variables">module</a>
+</li>
+      </ul></li>
+      <li>
     at.lattice.options
 
       <ul>
@@ -519,6 +579,13 @@
 </li>
       </ul></li>
       <li>
+    at.lattice.variables
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#module-at.lattice.variables">module</a>
+</li>
+      </ul></li>
+      <li>
     at.load
 
       <ul>
@@ -540,14 +607,21 @@
 </li>
       </ul></li>
       <li>
+    at.load.json
+
+      <ul>
+        <li><a href="p/api/at.load.json.html#module-at.load.json">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
     at.load.matfile
 
       <ul>
         <li><a href="p/api/at.load.matfile.html#module-at.load.matfile">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     at.load.reprfile
 
@@ -805,15 +879,19 @@
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BLMode">BLMode (class in at.collective.beam_loading)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.bool_refpts">bool_refpts() (in module at.lattice.utils)</a>
 
       <ul>
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.bool_refpts">(Lattice method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.bounds">bounds (VariableBase attribute)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.BRho">BRho (Lattice property)</a>
+</li>
+      <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Buffersize">Buffersize (BeamLoadingElement property)</a>
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.build_class_map">build_class_map() (in module at.lattice.elements)</a>
 </li>
@@ -869,10 +947,10 @@
       </ul></li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Collective">Collective (class in at.lattice.elements)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Collimator">Collimator (class in at.lattice.elements)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.options.html#at.lattice.options.common">common (in module at.lattice.options)</a>
 </li>
       <li><a href="p/api/at.tracking.atpass.html#at.tracking.atpass.common_rng">common_rng() (in module at.tracking.atpass)</a>
@@ -911,6 +989,8 @@
 </li>
       <li><a href="p/api/at.constants.html#at.constants.Cq">Cq (in module at.constants)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.CustomVariable">CustomVariable (class in at.lattice.variables)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -936,6 +1016,8 @@
 </li>
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SimpleQuantDiff.default_pass">(SimpleQuantDiff attribute)</a>
 </li>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SimpleRadiation.default_pass">(SimpleRadiation attribute)</a>
+</li>
         <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.default_pass">(WakeElement attribute)</a>
 </li>
       </ul></li>
@@ -949,10 +1031,16 @@
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole.DefaultOrder">(Sextupole attribute)</a>
 </li>
       </ul></li>
-      <li><a href="p/api/at.physics.nonlinear.html#at.physics.nonlinear.detuning">detuning() (in module at.physics.nonlinear)</a>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.definition">definition (Element property)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.delta">delta (VariableBase attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.deltas">deltas (VariableList property)</a>
+</li>
+      <li><a href="p/api/at.physics.nonlinear.html#at.physics.nonlinear.detuning">detuning() (in module at.physics.nonlinear)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.develop">develop() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.dFi_dphij">dFi_dphij() (Haissinski method)</a>
@@ -999,24 +1087,26 @@
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element">Element (class in at.lattice.elements)</a>
 </li>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.element_classes">element_classes() (in module at.load.utils)</a>
+</li>
       <li><a href="p/api/at.load.utils.html#at.load.utils.element_from_dict">element_from_dict() (in module at.load.utils)</a>
-</li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.element_from_m">element_from_m() (in module at.load.utils)</a>
-</li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.element_from_string">element_from_string() (in module at.load.utils)</a>
 </li>
       <li><a href="p/api/at.tracking.deprecated.html#at.tracking.deprecated.element_pass">element_pass() (in module at.tracking.deprecated)</a>
 </li>
       <li><a href="p/api/at.load.utils.html#at.load.utils.element_to_dict">element_to_dict() (in module at.load.utils)</a>
 </li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.element_to_m">element_to_m() (in module at.load.utils)</a>
-</li>
       <li><a href="p/api/at.tracking.track.html#at.tracking.track.element_track">element_track() (in module at.tracking.track)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementConstraints">ElementConstraints (class in at.matching.matching)</a>
 </li>
-      <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementVariable">ElementVariable (class in at.matching.matching)</a>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.ElementVariable.elements">elements (ElementVariable property)</a>
 </li>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.ElementVariable">ElementVariable (class in at.lattice.lattice_variables)</a>
+
+      <ul>
+        <li><a href="p/api/at.matching.matching.html#at.matching.matching.ElementVariable">(class in at.matching.matching)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.physics.energy_loss.html#at.physics.energy_loss.ELossMethod">ELossMethod (class in at.physics.energy_loss)</a>
@@ -1024,6 +1114,8 @@
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.enable_6d">enable_6d() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.End">End (in module at.lattice.utils)</a>
+</li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.endturn">endturn (SliceMoments property)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.energy">energy (Lattice property)</a>
 </li>
@@ -1059,9 +1151,9 @@
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.fillpattern">fillpattern (Lattice property)</a>
 </li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.find_class">find_class() (in module at.load.utils)</a>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Filter">Filter (in module at.lattice.lattice_object)</a>
 </li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.find_class_name">find_class_name() (in module at.load.utils)</a>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.find_class">find_class() (in module at.load.utils)</a>
 </li>
       <li><a href="p/api/at.physics.matrix.html#at.physics.matrix.find_elem_m66">find_elem_m66() (in module at.physics.matrix)</a>
 </li>
@@ -1119,6 +1211,8 @@
 </li>
       <li><a href="p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.Frf">Frf (class in at.lattice.cavity_access)</a>
 </li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.from_dict">from_dict() (Element static method)</a>
+</li>
       <li><a href="p/api/at.lattice.idtable_element.html#at.lattice.idtable_element.InsertionDeviceKickMap.from_text_file">from_text_file() (InsertionDeviceKickMap method)</a>
 </li>
   </ul></td>
@@ -1136,7 +1230,13 @@
       <li><a href="p/api/at.physics.radiation.html#at.physics.radiation.gen_quantdiff_elem">gen_quantdiff_elem() (in module at.physics.radiation)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.get">get() (Variable method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.get">(VariableBase method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.get">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_1d_acceptance">get_1d_acceptance() (in module at.acceptance.acceptance)</a>
 </li>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_acceptance">get_acceptance() (in module at.acceptance.acceptance)</a>
@@ -1217,14 +1317,14 @@
       </ul></li>
       <li><a href="p/api/at.physics.amat.html#at.physics.amat.get_mode_matrices">get_mode_matrices() (in module at.physics.amat)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.acceptance.acceptance.html#at.acceptance.acceptance.get_momentum_acceptance">get_momentum_acceptance() (in module at.acceptance.acceptance)</a>
 
       <ul>
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.get_momentum_acceptance">(Lattice method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.physics.linear.html#at.physics.linear.get_optics">get_optics() (in module at.physics.linear)</a>
 
       <ul>
@@ -1319,6 +1419,8 @@
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.get_vertical_acceptance">(Lattice method)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.getval">getval() (in module at.lattice.utils)</a>
+</li>
       <li><a href="p/api/at.acceptance.boundary.html#at.acceptance.boundary.GridMode">GridMode (class in at.acceptance.boundary)</a>
 </li>
   </ul></td>
@@ -1339,14 +1441,16 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.has_collective">has_collective() (in module at.tracking.utils)</a>
 </li>
-      <li><a href="p/api/at.load.utils.html#at.load.utils.hasattrs">hasattrs() (in module at.load.utils)</a>
-</li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Constraints.header">header() (Constraints static method)</a>
 
       <ul>
         <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.header">(Variable static method)</a>
 </li>
       </ul></li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.history">history (VariableBase property)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.history_length">history_length (VariableBase attribute)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -1355,7 +1459,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.i_range">i_range (Lattice property)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.increment">increment() (VariableBase method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.increment">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.initial_phi">initial_phi() (Haissinski method)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.initial_value">initial_value (VariableBase property)</a>
 </li>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.initialize_lpass">initialize_lpass() (in module at.tracking.utils)</a>
 </li>
@@ -1375,10 +1487,10 @@
 </li>
       <li><a href="p/api/at.tracking.track.html#at.tracking.track.internal_plpass">internal_plpass() (in module at.tracking.track)</a>
 </li>
-      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.is_6d">is_6d (Lattice property)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.is_6d">is_6d (Lattice property)</a>
+</li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.is_collective">is_collective (Element property)</a>
 
       <ul>
@@ -1406,6 +1518,8 @@
 </li>
         <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Quadrupole.items">(Quadrupole method)</a>
 </li>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole.items">(Sextupole method)</a>
+</li>
       </ul></li>
   </ul></td>
 </tr></table>
@@ -1428,11 +1542,19 @@
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Multipole.K">K (Multipole property)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.keep_attributes">keep_attributes() (in module at.load.utils)</a>
+</li>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.keep_elements">keep_elements() (in module at.load.utils)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.last_value">last_value (VariableBase property)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice">Lattice (class in at.lattice.lattice_object)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.lattice_filter">lattice_filter() (in module at.lattice.lattice_object)</a>
@@ -1471,6 +1593,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.load.elegant.html#at.load.elegant.load_elegant">load_elegant() (in module at.load.elegant)</a>
 </li>
+      <li><a href="p/api/at.load.json.html#at.load.json.load_json">load_json() (in module at.load.json)</a>
+</li>
       <li><a href="p/api/at.load.allfiles.html#at.load.allfiles.load_lattice">load_lattice() (in module at.load.allfiles)</a>
 </li>
       <li><a href="p/api/at.load.matfile.html#at.load.matfile.load_m">load_m() (in module at.load.matfile)</a>
@@ -1507,12 +1631,20 @@
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Marker">Marker (class in at.lattice.elements)</a>
 </li>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.mat_file">mat_file (Lattice property)</a>
+</li>
+      <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.mat_key">mat_key (Lattice property)</a>
+</li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.match">match() (in module at.matching.matching)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.mcf">mcf (Lattice property)</a>
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.means">means (BeamMoments property)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.means">(SliceMoments property)</a>
 </li>
+      </ul></li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Dipole.merge">merge() (Dipole method)</a>
 
       <ul>
@@ -1565,6 +1697,8 @@
 </li>
         <li><a href="p/api/at.lattice.lattice_object.html#module-at.lattice.lattice_object">at.lattice.lattice_object</a>
 </li>
+        <li><a href="p/api/at.lattice.lattice_variables.html#module-at.lattice.lattice_variables">at.lattice.lattice_variables</a>
+</li>
         <li><a href="p/api/at.lattice.options.html#module-at.lattice.options">at.lattice.options</a>
 </li>
         <li><a href="p/api/at.lattice.particle_object.html#module-at.lattice.particle_object">at.lattice.particle_object</a>
@@ -1575,11 +1709,15 @@
 </li>
         <li><a href="p/api/at.lattice.variable_elements.html#module-at.lattice.variable_elements">at.lattice.variable_elements</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#module-at.lattice.variables">at.lattice.variables</a>
+</li>
         <li><a href="p/api/at.load.html#module-at.load">at.load</a>
 </li>
         <li><a href="p/api/at.load.allfiles.html#module-at.load.allfiles">at.load.allfiles</a>
 </li>
         <li><a href="p/api/at.load.elegant.html#module-at.load.elegant">at.load.elegant</a>
+</li>
+        <li><a href="p/api/at.load.json.html#module-at.load.json">at.load.json</a>
 </li>
         <li><a href="p/api/at.load.matfile.html#module-at.load.matfile">at.load.matfile</a>
 </li>
@@ -1660,6 +1798,8 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.name">name (VariableBase attribute)</a>
+</li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.nbunch">nbunch (Lattice property)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.no_filter">no_filter() (in module at.lattice.lattice_object)</a>
@@ -1736,14 +1876,14 @@
 </li>
       <li><a href="p/api/at.plot.specific.html#at.plot.specific.pldata_linear">pldata_linear() (in module at.plot.specific)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.plot.standalone.html#at.plot.standalone.plot_acceptance">plot_acceptance() (in module at.plot.standalone)</a>
 
       <ul>
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.plot_acceptance">(Lattice method)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.plot.specific.html#at.plot.specific.plot_beta">plot_beta() (in module at.plot.specific)</a>
 
       <ul>
@@ -1769,6 +1909,10 @@
 </li>
       </ul></li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.precompute_S">precompute_S() (Haissinski method)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.previous_value">previous_value (VariableBase property)</a>
+</li>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.protect">protect() (in module at.load.utils)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1840,6 +1984,8 @@
 </li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.refpts_iterator">refpts_iterator() (in module at.lattice.utils)</a>
 </li>
+      <li><a href="p/api/at.lattice.lattice_variables.html#at.lattice.lattice_variables.RefptsVariable">RefptsVariable (class in at.lattice.lattice_variables)</a>
+</li>
       <li><a href="p/api/at.load.allfiles.html#at.load.allfiles.register_format">register_format() (in module at.load.allfiles)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.remove_beamloading">remove_beamloading() (in module at.collective.beam_loading)</a>
@@ -1849,7 +1995,11 @@
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.replace">replace() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.lattice.options.html#at.lattice.options.reset">reset() (in module at.lattice.options)</a>, <a href="p/api/at.lattice.options.html#id0">[1]</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.reset">(VariableBase method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.tracking.atpass.html#at.tracking.atpass.reset_rng">reset_rng() (in module at.tracking.atpass)</a>
@@ -1869,6 +2019,8 @@
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.ResonatorElement">ResonatorElement (class in at.collective.wake_elements)</a>
 </li>
       <li><a href="p/api/at.lattice.particle_object.html#at.lattice.particle_object.Particle.rest_energy">rest_energy (Particle property)</a>
+</li>
+      <li><a href="p/api/at.load.utils.html#at.load.utils.restore">restore() (in module at.load.utils)</a>
 </li>
       <li><a href="p/api/at.collective.wake_object.html#at.collective.wake_object.WakeType.RESWALL">RESWALL (WakeType attribute)</a>
 </li>
@@ -1908,6 +2060,8 @@
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.save">save() (Lattice method)</a>
 </li>
+      <li><a href="p/api/at.load.json.html#at.load.json.save_json">save_json() (in module at.load.json)</a>
+</li>
       <li><a href="p/api/at.load.allfiles.html#at.load.allfiles.save_lattice">save_lattice() (in module at.load.allfiles)</a>
 </li>
       <li><a href="p/api/at.load.matfile.html#at.load.matfile.save_m">save_m() (in module at.load.matfile)</a>
@@ -1921,13 +2075,23 @@
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.select">select() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.set">set() (Variable method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.set">(VariableBase method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.set">(VariableList method)</a>
+</li>
+      </ul></li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_6d">set_6d() (in module at.lattice.utils)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_beam_current">set_beam_current() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.set_buffers">set_buffers() (BeamMoments method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.set_buffers">(SliceMoments method)</a>
 </li>
+      </ul></li>
       <li><a href="p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.set_cavity">set_cavity() (in module at.lattice.cavity_access)</a>
 
       <ul>
@@ -1958,6 +2122,8 @@
 </li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.set_output">set_output() (Haissinski method)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.set_previous">set_previous() (VariableBase method)</a>
+</li>
       <li><a href="p/api/at.physics.revolution.html#at.physics.revolution.set_rf_frequency">set_rf_frequency() (in module at.physics.revolution)</a>
 
       <ul>
@@ -1970,8 +2136,6 @@
         <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.set_rf_timelag">(Lattice method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.cavity_access.html#at.lattice.cavity_access.set_rf_voltage">set_rf_voltage() (in module at.lattice.cavity_access)</a>
 
       <ul>
@@ -1980,6 +2144,8 @@
       </ul></li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_rotation">set_rotation() (in module at.lattice.utils)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.set_shift">set_shift() (in module at.lattice.utils)</a>
 
       <ul>
@@ -2002,6 +2168,8 @@
 </li>
       <li><a href="p/api/at.collective.haissinski.html#at.collective.haissinski.Haissinski.set_weights">set_weights() (Haissinski method)</a>
 </li>
+      <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.setval">setval() (in module at.lattice.utils)</a>
+</li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Sextupole">Sextupole (class in at.lattice.elements)</a>
 </li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.shift_elem">shift_elem() (in module at.lattice.utils)</a>
@@ -2012,11 +2180,15 @@
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SimpleQuantDiff">SimpleQuantDiff (class in at.lattice.elements)</a>
 </li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SimpleRadiation">SimpleRadiation (class in at.lattice.elements)</a>
+</li>
       <li><a href="p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.ACMode.SINE">SINE (ACMode attribute)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.slice">slice() (Lattice method)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.slice_elements">slice_elements() (Lattice method)</a>
+</li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments">SliceMoments (class in at.lattice.elements)</a>
 </li>
       <li><a href="p/api/at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice.slip_factor">slip_factor (Lattice property)</a>
 </li>
@@ -2026,15 +2198,31 @@
 </li>
       <li><a href="p/api/at.load.utils.html#at.load.utils.split_ignoring_parentheses">split_ignoring_parentheses() (in module at.load.utils)</a>
 </li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.spos">spos (SliceMoments property)</a>
+</li>
       <li><a href="p/api/at.collective.wake_object.html#at.collective.wake_object.Wake.srange">srange (Wake property)</a>
+</li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.startturn">startturn (SliceMoments property)</a>
 </li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Constraints.status">status() (Constraints method)</a>
 
       <ul>
         <li><a href="p/api/at.matching.matching.html#at.matching.matching.Variable.status">(Variable method)</a>
 </li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.status">(VariableBase method)</a>
+</li>
+        <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList.status">(VariableList method)</a>
+</li>
       </ul></li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.BeamMoments.stds">stds (BeamMoments property)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.stds">(SliceMoments property)</a>
+</li>
+      </ul></li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.step_down">step_down() (VariableBase method)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.step_up">step_up() (VariableBase method)</a>
 </li>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.swap_faces">swap_faces() (Element method)</a>
 </li>
@@ -2062,8 +2250,12 @@
 </li>
       <li><a href="p/api/at.lattice.utils.html#at.lattice.utils.tilt_elem">tilt_elem() (in module at.lattice.utils)</a>
 </li>
-      <li><a href="p/api/at.lattice.particle_object.html#at.lattice.particle_object.Particle.to_dict">to_dict() (Particle method)</a>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.to_dict">to_dict() (Element method)</a>
+
+      <ul>
+        <li><a href="p/api/at.lattice.particle_object.html#at.lattice.particle_object.Particle.to_dict">(Particle method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.Element.track">track() (Element method)</a>
@@ -2118,6 +2310,8 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase.value">value (VariableBase property)</a>
+</li>
       <li><a href="p/api/at.matching.matching.html#at.matching.matching.Constraints.values">values() (Constraints method)</a>
 
       <ul>
@@ -2128,17 +2322,27 @@
 </li>
       <li><a href="p/api/at.tracking.utils.html#at.tracking.utils.variable_refs">variable_refs() (in module at.tracking.utils)</a>
 </li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableBase">VariableBase (class in at.lattice.variables)</a>
+</li>
+      <li><a href="p/api/at.lattice.variables.html#at.lattice.variables.VariableList">VariableList (class in at.lattice.variables)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.VariableMultipole">VariableMultipole (class in at.lattice.variable_elements)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbeam">Vbeam (BeamLoadingElement property)</a>
 </li>
+      <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbeam_buffer">Vbeam_buffer (BeamLoadingElement property)</a>
+</li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbunch">Vbunch (BeamLoadingElement property)</a>
+</li>
+      <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vbunch_buffer">Vbunch_buffer (BeamLoadingElement property)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vcav">Vcav (BeamLoadingElement property)</a>
 </li>
       <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vgen">Vgen (BeamLoadingElement property)</a>
+</li>
+      <li><a href="p/api/at.collective.beam_loading.html#at.collective.beam_loading.BeamLoadingElement.Vgen_buffer">Vgen_buffer (BeamLoadingElement property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -2158,10 +2362,10 @@
 </li>
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement">WakeElement (class in at.collective.wake_elements)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.WakeQX">WakeQX (WakeElement property)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.WakeQY">WakeQY (WakeElement property)</a>
 </li>
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.WakeT">WakeT (WakeElement property)</a>
@@ -2169,6 +2373,8 @@
       <li><a href="p/api/at.collective.wake_object.html#at.collective.wake_object.WakeType">WakeType (class in at.collective.wake_object)</a>
 </li>
       <li><a href="p/api/at.collective.wake_elements.html#at.collective.wake_elements.WakeElement.WakeZ">WakeZ (WakeElement property)</a>
+</li>
+      <li><a href="p/api/at.lattice.elements.html#at.lattice.elements.SliceMoments.weights">weights (SliceMoments property)</a>
 </li>
       <li><a href="p/api/at.lattice.variable_elements.html#at.lattice.variable_elements.ACMode.WHITENOISE">WHITENOISE (ACMode attribute)</a>
 </li>
@@ -2211,75 +2417,74 @@
 
 
 
-            </article>
-            
-            
-            
-            <footer class="bd-footer-article">
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
-            </footer>
-            
-          </div>
-          
-          
-          
-            <div class="bd-sidebar-secondary bd-toc">
+                </article>
               
-<div class="toc-item">
-  
-<div id="searchbox"></div>
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
 </div>
-
-<div class="toc-item">
-  
-</div>
-
-<div class="toc-item">
-  
-</div>
-
+                </footer>
+              
             </div>
-          
-          
-        </div>
-        <footer class="bd-footer-content">
-          <div class="bd-footer-content__inner">
+            
+            
+              
             
           </div>
-        </footer>
+          <footer class="bd-footer-content">
+            
+          </footer>
         
       </main>
     </div>
   </div>
-
   
-    
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1e1de1a1873e13ef5536"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-  <footer class="bd-footer"><div class="bd-footer__inner container">
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
   
-  <div class="footer-item">
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
     
-<p class="copyright">
+      © Copyright 2022, ATCollab.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
 
-    &copy; Copyright 2022, ATCollab.<br>
-
-</p>
-
-  </div>
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.3.7.
+    <br/>
+  </p>
+</div>
+      
+    </div>
   
-  <div class="footer-item">
-    
-<p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
-</p>
-
-  </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.3.
+</p></div>
+      
+    </div>
   
 </div>
+
   </footer>
   </body>
 </html>
