@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -34,10 +36,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css?v=bc6ab313" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../_static/documentation_options.js?v=11bb8181"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -54,6 +57,7 @@
     <link rel="prev" title="at.plot.specific" href="at.plot.specific.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
   </head>
   
   
@@ -69,19 +73,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -89,7 +82,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -97,8 +89,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -132,7 +124,7 @@
     
     
     <img src="../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>`);</script>
+    <img src="../../_static/AT.png" class="logo__image only-dark pst-js-only" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
   
   
 </a></div>
@@ -178,29 +170,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -225,15 +209,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -252,7 +232,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -299,15 +280,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -346,6 +323,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../howto/multiprocessing.html">Parallel processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/CavityControl.html">Cavity Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/Collective.html">Collective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="at.load.madx.html">Working with MAD-X files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages:</span></p>
 <ul class="current nav bd-sidenav">
@@ -393,17 +371,20 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.physics.radiation.html">at.physics.radiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.revolution.html">at.physics.revolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.ring_parameters.html">at.physics.ring_parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.wiggdiffmatrix.html">at.physics.wiggdiffmatrix</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="at.load.html">at.load</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.file_input.html">at.load.file_input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.file_output.html">at.load.file_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.json.html">at.load.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.mad8.html">at.load.mad8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.madx.html">at.load.madx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.rpn.html">at.load.rpn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
 </ul>
@@ -463,8 +444,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -479,7 +458,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="at.plot.html" class="nav-link">at.plot</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">at.plot.standalone</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">at.plot.standalone</span></li>
   </ul>
 </nav>
 </div>
@@ -525,33 +504,25 @@ bucket). The Hamiltonian is calculated by summing all the cavities in the
 ring. Harmonic cavities are supported by the function.</p>
 <p>A perfectly tuned lattice is assumed, the cavities’ frequency is nominal
 and the TimeLag is set in a way ensuring ct=0 for the synchronous phase
-by using ring.set_cavity_phase().</p>
+by using <a class="reference internal" href="at.physics.energy_loss.html#at.physics.energy_loss.set_cavity_phase" title="at.physics.energy_loss.set_cavity_phase"><code class="xref py py-func docutils literal notranslate"><span class="pre">set_cavity_phase()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> – Lattice description</p></li>
-<li><p><strong>ct_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a>) – Forced lower and upper ct values for the plot.</p></li>
+<li><p><strong>ct_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – Forced lower and upper ct values for the plot.
+Default to <span class="math notranslate nohighlight">\(\pm 1.1 \times C / (2h)\)</span></p></li>
+<li><p><strong>dp_range</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a>) – Forced lower and upper dp values for the plot.
+Default to twice the RF acceptance of the bucket.</p></li>
+<li><p><strong>num_points</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of points for 1D grid (ct/dp)
+Default to 400.</p></li>
+<li><p><strong>num_levels</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of levels for contour plot. Odd number of
+levels allow to center the colorbar around 0. Default to 41.</p></li>
+<li><p><strong>plot_separatrix</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Flag to plot the separatrix contour
+(<span class="math notranslate nohighlight">\(\mathcal{H}=0\)</span>).</p></li>
 </ul>
 </dd>
-</dl>
-<p>:param Default to <span class="math notranslate nohighlight">\(\pm 1.1 \times C /:
-:type Default to :math:\)</span>pm 1.1 times C /: 2h
-:param dp_range: Forced lower and upper dp values for the plot.
-:type dp_range: tuple
-:param Default to twice the RF acceptance of the bucket.:
-:param num_points: Number of points for 1D grid (ct/dp)
-:type num_points: int
-:param Default to 400.:
-:param num_levels: Number of levels for contour plot. Odd number of
-:type num_levels: int
-:param levels allow to center the colorbar around 0.:
-:param Default to 41.:
-:param plot_separatrix: Flag to plot the separatrix contour
-:type plot_separatrix: bool
-:param (<span class="math notranslate nohighlight">\(\mathcal{H}=0\)</span>).:</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
 <li><p><strong>CT</strong> – (num_points,num_points) array: ct grid</p></li>
 <li><p><strong>DP</strong> – (num_points,num_points) array: dp grid</p></li>
 <li><p><strong>hamiltonian</strong> – (num_points,num_points) array: Hamiltonian values</p></li>
@@ -579,7 +550,7 @@ Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’</em>,
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>acceptance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – tuple containing
+<li><p><strong>acceptance</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><em>ndarray</em><em>, </em><em>ndarray</em><em>, </em><em>ndarray</em><em>]</em>) – tuple containing
 pre-computed acceptance <em>(boundary, survived, grid)</em></p></li>
 <li><p><strong>npoints</strong> – (len(planes),) array: number of points in each
 dimension</p></li>
@@ -590,9 +561,9 @@ max. amplitude</p></li>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: initial step</p></li>
 </ul>
 </p></li>
-<li><p><strong>nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of turns for the tracking</p></li>
+<li><p><strong>nturns</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of turns for the tracking</p></li>
 <li><p><strong>obspt</strong> (<em>Refpts</em>) – Observation points. Default: start of the machine</p></li>
-<li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Static momentum offset</p></li>
+<li><p><strong>dp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Static momentum offset</p></li>
 <li><p><strong>offset</strong> – Initial orbit. Default: closed orbit</p></li>
 <li><p><strong>bounds</strong> – <p>Defines the tracked range: range=bounds*amplitude.
 It can be used to select quadrants. For example, default values are:</p>
@@ -609,16 +580,16 @@ It can be used to select quadrants. For example, default values are:</p>
 <li><p><a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>: radial recursive search</p></li>
 </ul>
 </p></li>
-<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
+<li><p><strong>use_mp</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Use python multiprocessing (<a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.patpass" title="at.tracking.deprecated.patpass"><code class="xref py py-func docutils literal notranslate"><span class="pre">patpass()</span></code></a>,
 default use <a class="reference internal" href="at.tracking.deprecated.html#at.tracking.deprecated.lattice_pass" title="at.tracking.deprecated.lattice_pass"><code class="xref py py-func docutils literal notranslate"><span class="pre">lattice_pass()</span></code></a>). In case multiprocessing is not
 enabled, <em>grid_mode</em> is forced to <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a>
 (most efficient in single core)</p></li>
-<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – Print out some information</p></li>
-<li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Value of the divider used in
+<li><p><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – Print out some information</p></li>
+<li><p><strong>divider</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Value of the divider used in
 <a class="reference internal" href="at.acceptance.boundary.html#at.acceptance.boundary.GridMode.RECURSIVE" title="at.acceptance.boundary.GridMode.RECURSIVE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">GridMode.RECURSIVE</span></code></a> boundary search</p></li>
 <li><p><strong>shift_zero</strong></p></li>
-<li><p><strong>start_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Python multiprocessing start method. The default
-<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> uses the python default that is considered safe.
+<li><p><strong>start_method</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Python multiprocessing start method. The default
+<a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></a> uses the python default that is considered safe.
 Available parameters: <em>‘fork’</em>, <em>‘spawn’</em>, <em>‘forkserver’</em>.
 The default for linux is <em>‘fork’</em>, the default for macOS and
 Windows is <em>‘spawn’</em>. <em>‘fork’</em> may be used for macOS to speed up
@@ -649,8 +620,8 @@ considered unsafe.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ring</strong> (<a class="reference internal" href="at.lattice.lattice_object.html#at.lattice.lattice_object.Lattice" title="at.lattice.lattice_object.Lattice"><em>Lattice</em></a>) – Lattice description</p></li>
-<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
-<li><p><strong>centered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – it True the coordinates origin is the center of the ring</p></li>
+<li><p><strong>start_coordinates</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a><em>]</em>) – x,y,angle at starting point</p></li>
+<li><p><strong>centered</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – it True the coordinates origin is the center of the ring</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>Axes</em></a><em> | </em><em>None</em>) – axes for the plot. If not given, new axes are created</p></li>
 </ul>
 </dd>
@@ -681,10 +652,10 @@ considered unsafe.</p></li>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>sigma</strong> – <span class="math notranslate nohighlight">\(\Sigma\)</span>-matrix</p></li>
-<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – tuple if indices defining the plane of the <span class="math notranslate nohighlight">\(\Sigma\)</span>
+<li><p><strong>axis</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.13)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – tuple if indices defining the plane of the <span class="math notranslate nohighlight">\(\Sigma\)</span>
 projection. Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’</em>,
 <em>‘yp’</em>, <em>‘dp’</em>, <em>‘ct’</em>. Default: (<em>‘x’</em>, <em>‘xp’</em>)</p></li>
-<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Scaling factor for the emittance</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Scaling factor for the emittance</p></li>
 <li><p><strong>ax</strong> (<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="(in Matplotlib v3.9.2)"><em>Axes</em></a><em> | </em><em>None</em>) – axes for the plot. If not given, new axes are created</p></li>
 </ul>
 </dd>
@@ -730,7 +701,8 @@ projection. Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -761,8 +733,8 @@ projection. Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -795,7 +767,7 @@ projection. Allowed values are: <em>‘x’</em>, <em>‘xp’</em>, <em>‘y’
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>

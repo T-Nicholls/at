@@ -16,17 +16,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -34,10 +36,11 @@
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/css/custom_at.css?v=bc6ab313" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../_static/documentation_options.js?v=11bb8181"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -48,10 +51,11 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'p/api/at.load.file_input';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="at.load.json" href="at.load.json.html" />
+    <link rel="next" title="at.load.file_output" href="at.load.file_output.html" />
     <link rel="prev" title="at.load.elegant" href="at.load.elegant.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
   </head>
   
   
@@ -67,19 +71,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -87,7 +80,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -95,8 +87,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -130,7 +122,7 @@
     
     
     <img src="../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>`);</script>
+    <img src="../../_static/AT.png" class="logo__image only-dark pst-js-only" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
   
   
 </a></div>
@@ -176,29 +168,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -223,15 +207,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -250,7 +230,8 @@ document.write(`
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -297,15 +278,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -344,6 +321,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../howto/multiprocessing.html">Parallel processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/CavityControl.html">Cavity Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/Collective.html">Collective</a></li>
+<li class="toctree-l1"><a class="reference internal" href="at.load.madx.html">Working with MAD-X files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages:</span></p>
 <ul class="current nav bd-sidenav">
@@ -391,17 +369,20 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="at.physics.radiation.html">at.physics.radiation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.revolution.html">at.physics.revolution</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.physics.ring_parameters.html">at.physics.ring_parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.physics.wiggdiffmatrix.html">at.physics.wiggdiffmatrix</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="at.load.html">at.load</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="at.load.allfiles.html">at.load.allfiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.elegant.html">at.load.elegant</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">at.load.file_input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.file_output.html">at.load.file_output</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.json.html">at.load.json</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.mad8.html">at.load.mad8</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.madx.html">at.load.madx</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.matfile.html">at.load.matfile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.reprfile.html">at.load.reprfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="at.load.rpn.html">at.load.rpn</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.tracy.html">at.load.tracy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="at.load.utils.html">at.load.utils</a></li>
 </ul>
@@ -461,8 +442,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -477,7 +456,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="at.load.html" class="nav-link">at.load</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">at.load.file_input</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">at.load.file_input</span></li>
   </ul>
 </nav>
 </div>
@@ -497,25 +476,52 @@ document.write(`
   <section id="module-at.load.file_input">
 <span id="at-load-file-input"></span><h1>at.load.file_input<a class="headerlink" href="#module-at.load.file_input" title="Link to this heading">#</a></h1>
 <p>Generic text parsers for conversion of lattices in different formats to AT</p>
+<p class="rubric">Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.set_argparser" title="at.load.file_input.set_argparser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_argparser</span></code></a>(argparser)</p></td>
+<td><p>Decorator which adds an &quot;argparser&quot; attribute to a function</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.skip_class" title="at.load.file_input.skip_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skip_class</span></code></a>(classname, baseclass, **kwargs)</p></td>
+<td><p>Generate a class for skipped elements.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.ignore_class" title="at.load.file_input.ignore_class"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore_class</span></code></a>(classname, baseclass, **kwargs)</p></td>
+<td><p>Generate a class for ignored elements.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.skip_names" title="at.load.file_input.skip_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skip_names</span></code></a>(namespace, baseclass, classnames)</p></td>
+<td><p>Add classes for ignored elements in the given namespace.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.ignore_names" title="at.load.file_input.ignore_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ignore_names</span></code></a>(namespace, baseclass, classnames)</p></td>
+<td><p>Add classes for ignored elements in the given namespace.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <p class="rubric">Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.AnyDescr" title="at.load.file_input.AnyDescr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnyDescr</span></code></a>(*args, **kwargs)</p></td>
 <td><p>Base class for source object descriptors</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElementDescr</span></code></a>(*args, **kwargs)</p></td>
-<td><p>Simple representation of an element as a dict</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ElementDescr</span></code></a>(*args[, origin])</p></td>
+<td><p>Simple representation of an element as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.SequenceDescr" title="at.load.file_input.SequenceDescr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SequenceDescr</span></code></a>(*args, **kwargs)</p></td>
-<td><p>Simple representation of a sequence of elements as a list</p></td>
+<td><p>Simple representation of a sequence of elements as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.BaseParser" title="at.load.file_input.BaseParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseParser</span></code></a>(env, *args[, delimiter, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.BaseParser" title="at.load.file_input.BaseParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseParser</span></code></a>(env, *args[, strict, always_force])</p></td>
 <td><p>Generic file parser</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.UnorderedParser" title="at.load.file_input.UnorderedParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnorderedParser</span></code></a>(*args, **kwargs)</p></td>
-<td><p>parser allowing definitions in any order</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.UnorderedParser" title="at.load.file_input.UnorderedParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UnorderedParser</span></code></a>(env, *args, **kwargs)</p></td>
+<td><p>Parser allowing definitions in any order</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.DictNoDot" title="at.load.file_input.DictNoDot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DictNoDot</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.LowerCaseParser" title="at.load.file_input.LowerCaseParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LowerCaseParser</span></code></a>(env, *args[, strict, ...])</p></td>
+<td><p>Case independent parser</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#at.load.file_input.UpperCaseParser" title="at.load.file_input.UpperCaseParser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpperCaseParser</span></code></a>(env, *args[, strict, ...])</p></td>
+<td><p>Case independent parser</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#at.load.file_input.DictNoDot" title="at.load.file_input.DictNoDot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DictNoDot</span></code></a>(*args[, verbose])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -524,12 +530,18 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.AnyDescr">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnyDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#AnyDescr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.AnyDescr" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Base class for source object descriptors</p>
 <dl class="py method">
+<dt class="sig sig-object py" id="at.load.file_input.AnyDescr.argparser">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">argparser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argcount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argstr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#AnyDescr.argparser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.AnyDescr.argparser" title="Link to this definition">#</a></dt>
+<dd><p>Specialised argument parser</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.AnyDescr.expand">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#AnyDescr.expand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.AnyDescr.expand" title="Link to this definition">#</a></dt>
-<dd><p>Iterator on the possibly inverted sequence of elements</p>
+<span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#AnyDescr.expand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.AnyDescr.expand" title="Link to this definition">#</a></dt>
+<dd><p>Iterator on the generated AT elements</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
@@ -545,11 +557,29 @@ document.write(`
 <span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#AnyDescr.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.AnyDescr.update" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.AnyDescr.bool_attr">
+<span class="sig-name descname"><span class="pre">bool_attr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#at.load.file_input.AnyDescr.bool_attr" title="Link to this definition">#</a></dt>
+<dd><p>list of names of bool attributes</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.AnyDescr.pos_args">
+<span class="sig-name descname"><span class="pre">pos_args</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#at.load.file_input.AnyDescr.pos_args" title="Link to this definition">#</a></dt>
+<dd><p>list of names of positional arguments</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.AnyDescr.str_attr">
+<span class="sig-name descname"><span class="pre">str_attr</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">()</span></em><a class="headerlink" href="#at.load.file_input.AnyDescr.str_attr" title="Link to this definition">#</a></dt>
+<dd><p>list of names of str attributes</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.BaseParser">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">continuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\\'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linecomment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'#'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blockcomment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">endfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BaseParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.load.file_input.DictNoDot" title="at.load.file_input.DictNoDot"><code class="xref py py-class docutils literal notranslate"><span class="pre">DictNoDot</span></code></a></p>
 <p>Generic file parser</p>
 <p>Analyses files with the following MAD-like format:</p>
@@ -559,12 +589,9 @@ document.write(`
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><em>dict</em></a>) – global namespace used for evaluating commands</p></li>
-<li><p><strong>delimiter</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – command delimiter</p></li>
-<li><p><strong>continuation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – command continuation character</p></li>
-<li><p><strong>linecomment</strong> (<em>Union</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>, </em><em>None</em><em>]</em>) – Line comment character</p></li>
-<li><p><strong>blockcomment</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.12)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em><em>]</em>) – Block comment delimiter</p></li>
-<li><p><strong>endfile</strong> (<em>Optional</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – “End of input” marker</p></li>
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – global namespace used for evaluating commands</p></li>
+<li><p><strong>verbose</strong> – If True, print detail on the processing</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, assign 0 to undefined variables</p></li>
 <li><p><strong>*args</strong> – dict initializer</p></li>
 <li><p><strong>**kwargs</strong> – dict initializer</p></li>
 </ul>
@@ -573,13 +600,21 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.BaseParser.clear">
 <span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.clear" title="Link to this definition">#</a></dt>
-<dd><p>Clean the database</p>
+<dd><p>Clear the database: remove all parameters and objects</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.BaseParser.evaluate">
 <span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.evaluate" title="Link to this definition">#</a></dt>
-<dd><p>Evaluate an expression using <em>self</em> as local namespace</p>
+<dd><p>Evaluate the right side of an expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>expr</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – expression to evaluate</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>value</strong> – evaluated expression</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -596,15 +631,15 @@ document.write(`
 <dd><p>Create a lattice from the selected sequence</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>use</strong> – Name of the MADX sequence or line containing the desired
+<dd class="field-odd"><p><strong>use</strong> – Name of the sequence or line containing the desired
 lattice. Default: <code class="docutils literal notranslate"><span class="pre">ring</span></code></p>
 </dd>
 <dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Name of the lattice. Default: MADX sequence name.</p></li>
-<li><p><strong>particle</strong> (<a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a>) – Circulating particle. Default: from MADX</p></li>
-<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><em>float</em></a>) – Energy of the lattice [eV], Default: from MADX</p></li>
-<li><p><strong>periodicity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a>) – Number of periods. Default: 1</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the lattice. Default: sequence name.</p></li>
+<li><p><strong>particle</strong> (<a class="reference internal" href="at.lattice.particle_object.html#at.lattice.particle_object.Particle" title="at.lattice.particle_object.Particle"><em>Particle</em></a>) – Circulating particle. Default: Particle(“relativistic”)</p></li>
+<li><p><strong>energy</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – Energy of the lattice [eV]. Default: 1.0 GeV</p></li>
+<li><p><strong>periodicity</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – Number of periods. Default: 1</p></li>
 <li><p><strong>*</strong> – All other keywords will be set as Lattice attributes</p></li>
 </ul>
 </dd>
@@ -613,16 +648,17 @@ lattice. Default: <code class="docutils literal notranslate"><span class="pre">r
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.BaseParser.parse_files">
-<span class="sig-name descname"><span class="pre">parse_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prolog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epilog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.parse_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.parse_files" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">parse_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">filenames</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prolog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">epilog</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.parse_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.parse_files" title="Link to this definition">#</a></dt>
 <dd><p>Process files and fill the database</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>*filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a>) – Files to process</p></li>
-<li><p><strong>final</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, signals that the undefined variables may be set
+<li><p><strong>*filenames</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Files to process</p></li>
+<li><p><strong>final</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, signals that the undefined variables may be set
 to the default value</p></li>
-<li><p><strong>prolog</strong> (<em>None</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.12)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><em>...</em><em>]</em><em>, </em><em>None</em><em>]</em>)</p></li>
-<li><p><strong>epilog</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.12)"><em>Callable</em></a><em>[</em><em>[</em><em>...</em><em>]</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>prolog</strong> (<em>None</em><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a><em> | </em><em>Callable</em><em>[</em><em>...</em><em>, </em><em>None</em><em>]</em>)</p></li>
+<li><p><strong>epilog</strong> (<em>Callable</em><em>[</em><em>...</em><em>, </em><em>None</em><em>] </em><em>| </em><em>None</em>)</p></li>
+<li><p><strong>**kwargs</strong> – Initial variable definitions</p></li>
 </ul>
 </dd>
 </dl>
@@ -630,25 +666,46 @@ to the default value</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.BaseParser.parse_lines">
-<span class="sig-name descname"><span class="pre">parse_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.parse_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.parse_lines" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">parse_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lines</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#BaseParser.parse_lines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.BaseParser.parse_lines" title="Link to this definition">#</a></dt>
 <dd><p>Process input lines and fill the database</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.12)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.12)"><em>str</em></a><em>]</em>) – Iterable of input lines</p></li>
-<li><p><strong>final</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.12)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.12)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, signals that the undefined variables may be set
-to the defalt value</p></li>
+<li><p><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Iterable of input lines</p></li>
+<li><p><strong>final</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#True" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">True</span></code></a>, signals that the undefined variables may be set
+to the default value</p></li>
+<li><p><strong>**kwargs</strong> – Initial variable definitions</p></li>
 </ul>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.load.file_input.BaseParser.ignored">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ignored</span></span><a class="headerlink" href="#at.load.file_input.BaseParser.ignored" title="Link to this definition">#</a></dt>
+<dd><p>Set of ignored commands</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.load.file_input.BaseParser.missing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">missing</span></span><a class="headerlink" href="#at.load.file_input.BaseParser.missing" title="Link to this definition">#</a></dt>
+<dd><p>Set of missing definitions</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="at.load.file_input.BaseParser.sequences">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sequences</span></span><a class="headerlink" href="#at.load.file_input.BaseParser.sequences" title="Link to this definition">#</a></dt>
+<dd><p>List of available sequences or lines</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.DictNoDot">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DictNoDot</span></span><a class="reference internal" href="../../_modules/at/load/file_input.html#DictNoDot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.DictNoDot" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DictNoDot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#DictNoDot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.DictNoDot" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<dl class="field-list simple">
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.DictNoDot.get">
 <span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#DictNoDot.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.DictNoDot.get" title="Link to this definition">#</a></dt>
@@ -659,79 +716,205 @@ to the defalt value</p></li>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.ElementDescr">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElementDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.AnyDescr" title="at.load.file_input.AnyDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnyDescr</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
-<p>Simple representation of an element as a dict</p>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ElementDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.AnyDescr" title="at.load.file_input.AnyDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnyDescr</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
+<p>Simple representation of an element as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p>
 <dl class="py method">
-<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.convert">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.convert"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.convert" title="Link to this definition">#</a></dt>
-<dd><p>Generate the AT element, Most be overloaded for each specific element</p>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.attr_format">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">attr_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.attr_format"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.attr_format" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="at.load.file_input.ElementDescr.expand">
 <span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.expand"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.expand" title="Link to this definition">#</a></dt>
-<dd><p>Iterator on the possibly inverted sequence of elements</p>
+<dd><p>Iterator on the generated AT elements</p>
 <dl class="field-list simple">
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.from_at">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.from_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.from_at" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.meval">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">meval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.meval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.meval" title="Link to this definition">#</a></dt>
+<dd><p>Evaluation of superfluous parameters</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.to_at">
+<span class="sig-name descname"><span class="pre">to_at</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ElementDescr.to_at"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ElementDescr.to_at" title="Link to this definition">#</a></dt>
+<dd><p>Generate the AT element. Must be overloaded for each specific element</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.array_fmt">
+<span class="sig-name descname"><span class="pre">array_fmt</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{40:</span> <span class="pre">123,</span> <span class="pre">41:</span> <span class="pre">125,</span> <span class="pre">91:</span> <span class="pre">123,</span> <span class="pre">93:</span> <span class="pre">125}</span></em><a class="headerlink" href="#at.load.file_input.ElementDescr.array_fmt" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.at2mad">
+<span class="sig-name descname"><span class="pre">at2mad</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'Length':</span> <span class="pre">'L'}</span></em><a class="headerlink" href="#at.load.file_input.ElementDescr.at2mad" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="at.load.file_input.ElementDescr.bool_fmt">
+<span class="sig-name descname"><span class="pre">bool_fmt</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#at.load.file_input.ElementDescr.bool_fmt" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="at.load.file_input.ElementDescr.length">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.load.file_input.ElementDescr.length" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.load.file_input.ElementDescr.length" title="Link to this definition">#</a></dt>
 <dd><p>Element length</p>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="at.load.file_input.LowerCaseParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LowerCaseParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#LowerCaseParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.LowerCaseParser" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.BaseParser" title="at.load.file_input.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Case independent parser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – global namespace used for evaluating commands</p></li>
+<li><p><strong>verbose</strong> – If True, print detail on the processing</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, assign 0 to undefined variables</p></li>
+<li><p><strong>*args</strong> – dict initializer</p></li>
+<li><p><strong>**kwargs</strong> – dict initializer</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.SequenceDescr">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SequenceDescr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#SequenceDescr"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.SequenceDescr" title="Link to this definition">#</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.AnyDescr" title="at.load.file_input.AnyDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnyDescr</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(in Python v3.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></a></p>
-<p>Simple representation of a sequence of elements as a list</p>
+<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.AnyDescr" title="at.load.file_input.AnyDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnyDescr</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
+<p>Simple representation of a sequence of elements as a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="at.load.file_input.SequenceDescr.length">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.12)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.load.file_input.SequenceDescr.length" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></em><a class="headerlink" href="#at.load.file_input.SequenceDescr.length" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="at.load.file_input.UnorderedParser">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnorderedParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#UnorderedParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.UnorderedParser" title="Link to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UnorderedParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#UnorderedParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.UnorderedParser" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#at.load.file_input.BaseParser" title="at.load.file_input.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
-<p>parser allowing definitions in any order</p>
+<p>Parser allowing definitions in any order</p>
 <p>This is done by storing the failed statements in a queue and iteratively trying
 to execute them after all input statements have been processed, until the number
 of failures is constant (hopefully zero)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>env</strong> – global namespace</p></li>
-<li><p><strong>delimiter</strong> – command delimiter</p></li>
-<li><p><strong>continuation</strong> – command continuation character</p></li>
-<li><p><strong>linecomment</strong> – Line comment character</p></li>
-<li><p><strong>blockcomment</strong> – Block comment delimiter</p></li>
-<li><p><strong>endfile</strong> – End of input marker</p></li>
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – global namespace</p></li>
+<li><p><strong>verbose</strong> – If True, print detail on the processing</p></li>
 <li><p><strong>*args</strong> – dict initializer</p></li>
 <li><p><strong>**kwargs</strong> – dict initializer</p></li>
 </ul>
 </dd>
 </dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="at.load.file_input.UnorderedParser.clear">
-<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#UnorderedParser.clear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.UnorderedParser.clear" title="Link to this definition">#</a></dt>
-<dd><p>Clean the database</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="at.load.file_input.UnorderedParser.missing">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">missing</span></span><a class="headerlink" href="#at.load.file_input.UnorderedParser.missing" title="Link to this definition">#</a></dt>
-<dd><p>Set of missing definitions</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="at.load.file_input.UpperCaseParser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UpperCaseParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">env</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_force</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#UpperCaseParser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.UpperCaseParser" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#at.load.file_input.BaseParser" title="at.load.file_input.BaseParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseParser</span></code></a></p>
+<p>Case independent parser</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – global namespace used for evaluating commands</p></li>
+<li><p><strong>verbose</strong> – If True, print detail on the processing</p></li>
+<li><p><strong>strict</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a>) – If <a class="reference external" href="https://docs.python.org/3/library/constants.html#False" title="(in Python v3.13)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">False</span></code></a>, assign 0 to undefined variables</p></li>
+<li><p><strong>*args</strong> – dict initializer</p></li>
+<li><p><strong>**kwargs</strong> – dict initializer</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.file_input.ignore_class">
+<span class="sig-name descname"><span class="pre">ignore_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseclass</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ignore_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ignore_class" title="Link to this definition">#</a></dt>
+<dd><p>Generate a class for ignored elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the generated class</p></li>
+<li><p><strong>baseclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.13)"><em>type</em></a><em>[</em><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><em>ElementDescr</em></a><em>]</em>) – Base class, must be a subclass of <a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementDescr</span></code></a></p></li>
+<li><p><strong>**kwargs</strong> – dictionary of additional attributes and methods. See <code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cls</strong> – Element class, converted to <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Marker" title="at.lattice.elements.Marker"><code class="xref py py-class docutils literal notranslate"><span class="pre">Marker</span></code></a> or <a class="reference internal" href="at.lattice.elements.html#at.lattice.elements.Drift" title="at.lattice.elements.Drift"><code class="xref py py-class docutils literal notranslate"><span class="pre">Drift</span></code></a>
+when generating AT elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.file_input.ignore_names">
+<span class="sig-name descname"><span class="pre">ignore_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseclass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classnames</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#ignore_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.ignore_names" title="Link to this definition">#</a></dt>
+<dd><p>Add classes for ignored elements in the given namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namespace</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p></li>
+<li><p><strong>baseclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.13)"><em>type</em></a><em>[</em><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><em>ElementDescr</em></a><em>]</em>) – Base class, must be a subclass of <a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementDescr</span></code></a></p></li>
+<li><p><strong>classnames</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Class names of the generated classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.file_input.set_argparser">
+<span class="sig-name descname"><span class="pre">set_argparser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">argparser</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#set_argparser"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.set_argparser" title="Link to this definition">#</a></dt>
+<dd><p>Decorator which adds an “argparser” attribute to a function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.file_input.skip_class">
+<span class="sig-name descname"><span class="pre">skip_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseclass</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#skip_class"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.skip_class" title="Link to this definition">#</a></dt>
+<dd><p>Generate a class for skipped elements.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>classname</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – Name of the generated class</p></li>
+<li><p><strong>baseclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.13)"><em>type</em></a><em>[</em><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><em>ElementDescr</em></a><em>]</em>) – Base class, must be a subclass of <a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementDescr</span></code></a></p></li>
+<li><p><strong>**kwargs</strong> – dictionary of additional attributes and methods. See <code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>cls</strong> – Element class, skipped when generating AT elements</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="at.load.file_input.skip_names">
+<span class="sig-name descname"><span class="pre">skip_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">namespace</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseclass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classnames</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/at/load/file_input.html#skip_names"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#at.load.file_input.skip_names" title="Link to this definition">#</a></dt>
+<dd><p>Add classes for ignored elements in the given namespace.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>namespace</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>)</p></li>
+<li><p><strong>baseclass</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(in Python v3.13)"><em>type</em></a><em>[</em><a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><em>ElementDescr</em></a><em>]</em>) – Base class, must be a subclass of <a class="reference internal" href="#at.load.file_input.ElementDescr" title="at.load.file_input.ElementDescr"><code class="xref py py-class docutils literal notranslate"><span class="pre">ElementDescr</span></code></a></p></li>
+<li><p><strong>classnames</strong> (<a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.13)"><em>Iterable</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a><em>]</em>) – Class names of the generated classes</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -756,11 +939,11 @@ of failures is constant (hopefully zero)</p>
       </div>
     </a>
     <a class="right-next"
-       href="at.load.json.html"
+       href="at.load.file_output.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">at.load.json</p>
+        <p class="prev-next-title">at.load.file_output</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -771,7 +954,8 @@ of failures is constant (hopefully zero)</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -783,9 +967,13 @@ of failures is constant (hopefully zero)</p>
   <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr"><code class="docutils literal notranslate"><span class="pre">AnyDescr</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.argparser"><code class="docutils literal notranslate"><span class="pre">AnyDescr.argparser()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.expand"><code class="docutils literal notranslate"><span class="pre">AnyDescr.expand()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.inverted"><code class="docutils literal notranslate"><span class="pre">AnyDescr.inverted()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.update"><code class="docutils literal notranslate"><span class="pre">AnyDescr.update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.bool_attr"><code class="docutils literal notranslate"><span class="pre">AnyDescr.bool_attr</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.pos_args"><code class="docutils literal notranslate"><span class="pre">AnyDescr.pos_args</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.AnyDescr.str_attr"><code class="docutils literal notranslate"><span class="pre">AnyDescr.str_attr</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser"><code class="docutils literal notranslate"><span class="pre">BaseParser</span></code></a><ul class="nav section-nav flex-column">
@@ -795,6 +983,9 @@ of failures is constant (hopefully zero)</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.lattice"><code class="docutils literal notranslate"><span class="pre">BaseParser.lattice()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.parse_files"><code class="docutils literal notranslate"><span class="pre">BaseParser.parse_files()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.parse_lines"><code class="docutils literal notranslate"><span class="pre">BaseParser.parse_lines()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.ignored"><code class="docutils literal notranslate"><span class="pre">BaseParser.ignored</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.missing"><code class="docutils literal notranslate"><span class="pre">BaseParser.missing</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.BaseParser.sequences"><code class="docutils literal notranslate"><span class="pre">BaseParser.sequences</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.DictNoDot"><code class="docutils literal notranslate"><span class="pre">DictNoDot</span></code></a><ul class="nav section-nav flex-column">
@@ -802,20 +993,29 @@ of failures is constant (hopefully zero)</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr"><code class="docutils literal notranslate"><span class="pre">ElementDescr</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.convert"><code class="docutils literal notranslate"><span class="pre">ElementDescr.convert()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.attr_format"><code class="docutils literal notranslate"><span class="pre">ElementDescr.attr_format()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.expand"><code class="docutils literal notranslate"><span class="pre">ElementDescr.expand()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.from_at"><code class="docutils literal notranslate"><span class="pre">ElementDescr.from_at()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.meval"><code class="docutils literal notranslate"><span class="pre">ElementDescr.meval()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.to_at"><code class="docutils literal notranslate"><span class="pre">ElementDescr.to_at()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.array_fmt"><code class="docutils literal notranslate"><span class="pre">ElementDescr.array_fmt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.at2mad"><code class="docutils literal notranslate"><span class="pre">ElementDescr.at2mad</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.bool_fmt"><code class="docutils literal notranslate"><span class="pre">ElementDescr.bool_fmt</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ElementDescr.length"><code class="docutils literal notranslate"><span class="pre">ElementDescr.length</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.LowerCaseParser"><code class="docutils literal notranslate"><span class="pre">LowerCaseParser</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.SequenceDescr"><code class="docutils literal notranslate"><span class="pre">SequenceDescr</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.SequenceDescr.length"><code class="docutils literal notranslate"><span class="pre">SequenceDescr.length</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.UnorderedParser"><code class="docutils literal notranslate"><span class="pre">UnorderedParser</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.UnorderedParser.clear"><code class="docutils literal notranslate"><span class="pre">UnorderedParser.clear()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.UnorderedParser.missing"><code class="docutils literal notranslate"><span class="pre">UnorderedParser.missing</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.UnorderedParser"><code class="docutils literal notranslate"><span class="pre">UnorderedParser</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.UpperCaseParser"><code class="docutils literal notranslate"><span class="pre">UpperCaseParser</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ignore_class"><code class="docutils literal notranslate"><span class="pre">ignore_class()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.ignore_names"><code class="docutils literal notranslate"><span class="pre">ignore_names()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.set_argparser"><code class="docutils literal notranslate"><span class="pre">set_argparser()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.skip_class"><code class="docutils literal notranslate"><span class="pre">skip_class()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at.load.file_input.skip_names"><code class="docutils literal notranslate"><span class="pre">skip_names()</span></code></a></li>
 </ul>
   </nav></div>
 
@@ -832,8 +1032,8 @@ of failures is constant (hopefully zero)</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -866,7 +1066,7 @@ of failures is constant (hopefully zero)</p>
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>

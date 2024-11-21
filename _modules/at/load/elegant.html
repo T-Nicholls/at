@@ -15,17 +15,19 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -33,10 +35,11 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/css/custom_at.css?v=bc6ab313" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../../../_static/documentation_options.js?v=11bb8181"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -49,6 +52,7 @@
     <link rel="search" title="Search" href="../../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="0.4" />
   </head>
   
   
@@ -64,19 +68,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -84,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -92,8 +84,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -127,7 +119,7 @@
     
     
     <img src="../../../_static/AT.png" class="logo__image only-light" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/AT.png" class="logo__image only-dark" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>`);</script>
+    <img src="../../../_static/AT.png" class="logo__image only-dark pst-js-only" alt="Accelerator Toolbox 0.4.1 documentation - Home"/>
   
   
 </a></div>
@@ -173,29 +165,21 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
         <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -220,15 +204,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -245,7 +225,8 @@ document.write(`
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -292,15 +273,11 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
           <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
@@ -344,8 +321,6 @@ document.write(`
       
         <div class="header-article-item">
 
-
-
 <nav aria-label="Breadcrumb" class="d-print-none">
   <ul class="bd-breadcrumbs">
     
@@ -357,7 +332,7 @@ document.write(`
     
     <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page">at.load.elegant</li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">at.load.elegant</span></li>
   </ul>
 </nav>
 </div>
@@ -375,349 +350,577 @@ document.write(`
                 <article class="bd-article">
                   
   <h1>Source code for at.load.elegant</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Load a lattice from an Elegant file (.lte).</span>
+<span></span><span class="sd">&quot;&quot;&quot;Using `Elegant`_ files with PyAT</span>
+<span class="sd">==================================</span>
 
-<span class="sd">This is not complete but can parse the example files that I have.</span>
-<span class="sd">This parser is quite similar to the Tracy parser in tracy.py.</span>
+<span class="sd">PyAT can read lattice descriptions in Elegant format (.lte files), and can export</span>
+<span class="sd">lattices in Elegant format.</span>
 
-<span class="sd">The Elegant file format is described briefly `here</span>
-<span class="sd">&lt;https://ops.aps.anl.gov/manuals/elegant_latest/elegantse9.html#x113-1120009&gt;`_.</span>
-<span class="sd">It is similar to the `MAD-X format &lt;http://madx.web.cern.ch/madx/&gt;`_.</span>
+<span class="sd">However, because of intrinsic differences between PyAT and Elegant, some</span>
+<span class="sd">incompatibilities must be taken into account.</span>
 
-<span class="sd">Note that Elegant scales magnet polynomials in a different way</span>
-<span class="sd">to AT, so the parsed coefficients need to be divided by n! for</span>
-<span class="sd">the coefficient of order n.</span>
+<span class="sd">1. Translation losses</span>
+<span class="sd">---------------------</span>
 
+<span class="sd">Multipoles</span>
+<span class="sd">^^^^^^^^^^^^^^</span>
+
+<span class="sd">Elegant thick multipoles are limited to a single multipole order. For AT</span>
+<span class="sd">:py:class:`.Multipole` elements combining several orders, the lowest order is converted</span>
+<span class="sd">and higher orders are discarded. AT :py:class:`.ThinMultipole` elements are expanded</span>
+<span class="sd">to a series of thin ``MULT`` elements with 0 length.</span>
+
+<span class="sd">Elegant elements absent from AT</span>
+<span class="sd">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="sd">Many Elegant elements have no equivalent in AT. They are replaced by</span>
+<span class="sd">:py:class:`.Marker` or :py:class:`.Drift` elements, depending on their length.</span>
+
+<span class="sd">Incompatible attributes</span>
+<span class="sd">^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="sd">Some AT element attributes have no Elegant equivalent, and vice versa.</span>
+
+<span class="sd">When exporting to an Elegant file:</span>
+
+<span class="sd">- `FringeBendEntrance`, `FringeBendExit`, `FringeQuadEntrance`, `FringeQuadExit` are</span>
+<span class="sd">  discarded,</span>
+<span class="sd">- `R1`, `R2`, `T1`, `T2` are discarded,</span>
+<span class="sd">- `RApertures`, `EApertures` are discarded.</span>
+
+<span class="sd">When reading an Elegant file:</span>
+
+<span class="sd">- `TILT` is interpreted and converted to `R1` and `R2` attributes,</span>
+<span class="sd">- `DX`, `DZ` are converted to `T1`and `T2` attributes,</span>
+<span class="sd">- `N_SLICES`, if specified, is converted to `NumIntSteps`. If not, `NumIntSteps` is</span>
+<span class="sd">  left to is default value (10).</span>
+
+<span class="sd">2. Usage</span>
+<span class="sd">--------</span>
+
+<span class="sd">Usage Elegant files is similar to :ref:`using MAD-X files &lt;using-mad-x-files&gt;`. The</span>
+<span class="sd">Elegant RPN calculator is emulated.</span>
+
+<span class="sd">3. Functions and classes</span>
+<span class="sd">------------------------</span>
+
+<span class="sd">.. _elegant: https://ops.aps.anl.gov/manuals/elegant_latest/elegant.html#elegantse9.html</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">log</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">abspath</span>
-<span class="kn">import</span> <span class="nn">re</span>
 
-<span class="kn">from</span> <span class="nn">at.lattice.elements</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">Aperture</span><span class="p">,</span>
-    <span class="n">Corrector</span><span class="p">,</span>
-    <span class="n">Drift</span><span class="p">,</span>
-    <span class="n">Dipole</span><span class="p">,</span>
-    <span class="n">Marker</span><span class="p">,</span>
-    <span class="n">Multipole</span><span class="p">,</span>
-    <span class="n">Octupole</span><span class="p">,</span>
-    <span class="n">Quadrupole</span><span class="p">,</span>
-    <span class="n">RFCavity</span><span class="p">,</span>
-    <span class="n">Sextupole</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ElegantParser&quot;</span><span class="p">,</span> <span class="s2">&quot;_ElegantExporter&quot;</span><span class="p">,</span> <span class="s2">&quot;load_elegant&quot;</span><span class="p">,</span> <span class="s2">&quot;save_elegant&quot;</span><span class="p">]</span>
+
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">factorial</span>
+<span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">c</span> <span class="k">as</span> <span class="n">clight</span>
+
+<span class="kn">from</span> <span class="nn">.allfiles</span> <span class="kn">import</span> <span class="n">register_format</span>
+<span class="kn">from</span> <span class="nn">.file_input</span> <span class="kn">import</span> <span class="n">ElementDescr</span><span class="p">,</span> <span class="n">BaseParser</span><span class="p">,</span> <span class="n">UpperCaseParser</span>
+<span class="kn">from</span> <span class="nn">.file_input</span> <span class="kn">import</span> <span class="n">skip_names</span><span class="p">,</span> <span class="n">ignore_names</span><span class="p">,</span> <span class="n">ignore_class</span>
+<span class="kn">from</span> <span class="nn">.file_output</span> <span class="kn">import</span> <span class="n">Exporter</span>
+<span class="kn">from</span> <span class="nn">..lattice</span> <span class="kn">import</span> <span class="n">Particle</span><span class="p">,</span> <span class="n">Lattice</span><span class="p">,</span> <span class="n">elements</span> <span class="k">as</span> <span class="n">elt</span><span class="p">,</span> <span class="n">tilt_elem</span><span class="p">,</span> <span class="n">shift_elem</span>
+
+<span class="c1"># noinspection PyProtectedMember</span>
+<span class="kn">from</span> <span class="nn">.madx</span> <span class="kn">import</span> <span class="n">sinc</span><span class="p">,</span> <span class="n">_Line</span><span class="p">,</span> <span class="n">p_dict</span><span class="p">,</span> <span class="n">p_list</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">Rpn</span>
+
+
+<span class="c1"># -------------------</span>
+<span class="c1">#  Utility functions</span>
+<span class="c1"># -------------------</span>
+
+
+<span class="k">def</span> <span class="nf">elegant_element</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Decorator which tilts and shifts the decorated AT element&quot;&quot;&quot;</span>
+
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+        <span class="n">tilt</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">dx</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">dy</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">n_slices</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">n_kicks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">n_kicks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># Deprecated parameter</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n_kicks</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_slices</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n_slices</span>
+        <span class="n">elems</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tilt</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">tilt_elem</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">tilt</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">dx</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">dy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">):</span>
+                <span class="n">shift_elem</span><span class="p">(</span><span class="n">el</span><span class="p">,</span> <span class="n">deltax</span><span class="o">=</span><span class="n">dx</span><span class="p">,</span> <span class="n">deltaz</span><span class="o">=</span><span class="n">dy</span><span class="p">)</span>
+            <span class="n">el</span><span class="o">.</span><span class="n">origin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">origin</span>
+        <span class="k">return</span> <span class="n">elems</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="c1"># ------------------------------</span>
+<span class="c1">#  Base class for Elegant elements</span>
+<span class="c1"># ------------------------------</span>
+
+
+<span class="k">class</span> <span class="nc">_ElegantElement</span><span class="p">(</span><span class="n">ElementDescr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Description of MADX elements&quot;&quot;&quot;</span>
+
+    <span class="n">str_attr</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;filename&quot;</span><span class="p">,</span> <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;insert_from&quot;</span><span class="p">}</span>
+
+
+<span class="c1"># ------------------------------</span>
+<span class="c1">#  Elegant classes</span>
+<span class="c1"># ------------------------------</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">DRIF</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Drift</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">MARK</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="n">at2mad</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">KQUAD</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Quadrupole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_at</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">el</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p_dict</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">,</span> <span class="p">())))</span>
+        <span class="k">return</span> <span class="n">el</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">KSEXT</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Sextupole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k2</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_at</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">el</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p_dict</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">,</span> <span class="p">())))</span>
+        <span class="k">return</span> <span class="n">el</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">KQUSE</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">poly_b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Multipole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="p">[],</span> <span class="n">poly_b</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">KOCT</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">k3</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">poly_b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">k3</span> <span class="o">/</span> <span class="mf">6.0</span><span class="p">]</span>
+        <span class="n">poly_a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Octupole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">poly_a</span><span class="p">,</span> <span class="n">poly_b</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_at</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">el</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p_dict</span><span class="p">([</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;K3&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">,</span> <span class="p">())))</span>
+        <span class="k">return</span> <span class="n">el</span>
+
+
+<span class="k">class</span> <span class="nc">MULT</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="n">at2mad</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;Order&quot;</span><span class="p">:</span> <span class="s2">&quot;ORDER&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="s2">&quot;KNL&quot;</span><span class="p">}</span>
+
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">knl</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">poly_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">poly_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">poly_b</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="n">knl</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">ThinMultipole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">poly_a</span><span class="p">,</span> <span class="n">poly_b</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">poly_b</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="n">knl</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">order</span><span class="p">)</span> <span class="o">/</span> <span class="n">l</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Multipole</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">poly_a</span><span class="p">,</span> <span class="n">poly_b</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">CSBEND</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="n">at2mad</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;BendingAngle&quot;</span><span class="p">:</span> <span class="s2">&quot;ANGLE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;EntranceAngle&quot;</span><span class="p">:</span> <span class="s2">&quot;E1&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ExitAngle&quot;</span><span class="p">:</span> <span class="s2">&quot;E2&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">l</span><span class="p">,</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">angle</span><span class="p">,</span>
+        <span class="n">e1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">e2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">k1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">k2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">k3</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">k4</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">hgap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fint</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">hgap</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">FullGap</span><span class="o">=</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">hgap</span><span class="p">,</span> <span class="n">FringeInt1</span><span class="o">=</span><span class="n">fint</span><span class="p">,</span> <span class="n">FringeInt2</span><span class="o">=</span><span class="n">fint</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">k2</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">k3</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">k4</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span> <span class="n">k3</span> <span class="o">/</span> <span class="mf">6.0</span><span class="p">,</span> <span class="n">k4</span> <span class="o">/</span> <span class="mf">24.0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">elt</span><span class="o">.</span><span class="n">Dipole</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">l</span><span class="p">,</span>
+                <span class="n">angle</span><span class="p">,</span>
+                <span class="n">k1</span><span class="p">,</span>
+                <span class="n">EntranceAngle</span><span class="o">=</span><span class="n">e1</span><span class="p">,</span>
+                <span class="n">ExitAngle</span><span class="o">=</span><span class="n">e2</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_at</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">el</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p_dict</span><span class="p">([</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">,</span> <span class="s2">&quot;K3&quot;</span><span class="p">],</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">,</span> <span class="p">())))</span>
+        <span class="k">return</span> <span class="n">el</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">RBEN</span><span class="p">(</span><span class="n">CSBEND</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">e1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">e2</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">hangle</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">angle</span><span class="p">)</span>
+        <span class="n">arclength</span> <span class="o">=</span> <span class="n">l</span> <span class="o">/</span> <span class="n">sinc</span><span class="p">(</span><span class="n">hangle</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_at</span><span class="p">(</span><span class="n">arclength</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">e1</span><span class="o">=</span><span class="n">hangle</span> <span class="o">+</span> <span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="o">=</span><span class="n">hangle</span> <span class="o">+</span> <span class="n">e2</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">length</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Element length&quot;&quot;&quot;</span>
+        <span class="n">hangle</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;angle&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;l&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">sinc</span><span class="p">(</span><span class="n">hangle</span><span class="p">)</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">KICKER</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hkick</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vkick</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">kicks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">hkick</span><span class="p">,</span> <span class="n">vkick</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Corrector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">kicks</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_at</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">el</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">kicks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;KickAngle&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+        <span class="n">el</span><span class="p">[</span><span class="s2">&quot;HKICK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kicks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">el</span><span class="p">[</span><span class="s2">&quot;VKICK&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kicks</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">el</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">HKICK</span><span class="p">(</span><span class="n">KICKER</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kick</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_at</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">hkick</span><span class="o">=</span><span class="n">kick</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">VKICK</span><span class="p">(</span><span class="n">KICKER</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">kick</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">to_at</span><span class="p">(</span><span class="n">l</span><span class="o">=</span><span class="n">l</span><span class="p">,</span> <span class="n">vkick</span><span class="o">=</span><span class="n">kick</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">RFCA</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="n">at2mad</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="s2">&quot;Voltage&quot;</span><span class="p">:</span> <span class="s2">&quot;VOLT&quot;</span><span class="p">,</span> <span class="s2">&quot;Frequency&quot;</span><span class="p">:</span> <span class="s2">&quot;FREQ&quot;</span><span class="p">}</span>
+
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>  <span class="c1"># noqa: E741</span>
+        <span class="n">volt</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">freq</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">cavity</span> <span class="o">=</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">l</span><span class="p">,</span>
+            <span class="n">volt</span><span class="p">,</span>
+            <span class="n">freq</span><span class="p">,</span>
+            <span class="mi">0</span><span class="p">,</span>
+            <span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">PassMethod</span><span class="o">=</span><span class="s2">&quot;IdentityPass&quot;</span> <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="k">else</span> <span class="s2">&quot;DriftPass&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">params</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">cavity</span><span class="p">]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">MONI</span><span class="p">(</span><span class="n">_ElegantElement</span><span class="p">):</span>
+    <span class="nd">@elegant_element</span>
+    <span class="k">def</span> <span class="nf">to_at</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">):</span>  <span class="c1"># noqa: E741</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Monitor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">hl</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">l</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="n">elt</span><span class="o">.</span><span class="n">Drift</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">hl</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;MONI&quot;</span><span class="p">),</span>
+                <span class="n">elt</span><span class="o">.</span><span class="n">Monitor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">),</span>
+                <span class="n">elt</span><span class="o">.</span><span class="n">Drift</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">hl</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;MONI&quot;</span><span class="p">),</span>
+            <span class="p">]</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">HMON</span><span class="p">(</span><span class="n">MONI</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># noinspection PyPep8Naming</span>
+<span class="k">class</span> <span class="nc">VMON</span><span class="p">(</span><span class="n">MONI</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">multipole</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AT ThinMultipole or Multipole converted to Elegant MULT&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">singlemul</span><span class="p">(</span><span class="n">nm</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">nm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">nm</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">o</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">MULT</span><span class="o">.</span><span class="n">from_at</span><span class="p">({</span><span class="s2">&quot;FamName&quot;</span><span class="p">:</span> <span class="n">nm</span><span class="p">,</span> <span class="s2">&quot;Length&quot;</span><span class="p">:</span> <span class="n">length</span><span class="p">,</span> <span class="s2">&quot;Order&quot;</span><span class="p">:</span> <span class="n">o</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">:</span> <span class="n">v</span><span class="p">})</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;FamName&quot;</span><span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="n">poly_b</span> <span class="o">=</span> <span class="n">p_list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">,</span> <span class="p">()))</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">singlemul</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">poly_b</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">order</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">poly_b</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">singlemul</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">length</span> <span class="o">*</span> <span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">singlemul</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">poly_b</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ignore</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;AT element ignored in Elegant: convert to marker or drift&quot;&quot;&quot;</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">length</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is replaced by a marker&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">MARK</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> is replaced by a drift&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">DRIF</span><span class="o">.</span><span class="n">from_at</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="n">SOLENOID</span> <span class="o">=</span> <span class="n">ignore_class</span><span class="p">(</span><span class="s2">&quot;SOLENOID&quot;</span><span class="p">,</span> <span class="n">_ElegantElement</span><span class="p">)</span>
+
+<span class="n">skip_names</span><span class="p">(</span>
+    <span class="nb">globals</span><span class="p">(),</span>
+    <span class="n">_ElegantElement</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;MAXAMP&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;CHARGE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;RECIRC&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;MALIGN&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SREFFECTS&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;PFILTER&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ENERGY&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;SCATTER&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WATCH&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;WAKE&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
 <span class="p">)</span>
-<span class="kn">from</span> <span class="nn">at.lattice</span> <span class="kn">import</span> <span class="n">Lattice</span>
-<span class="kn">from</span> <span class="nn">at.load</span> <span class="kn">import</span> <span class="n">register_format</span><span class="p">,</span> <span class="n">utils</span>
-
-<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;load_elegant&#39;</span><span class="p">]</span>
 
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_drift</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Drift</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="n">ignore_names</span><span class="p">(</span><span class="nb">globals</span><span class="p">(),</span> <span class="n">_ElegantElement</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;SCRAPER&quot;</span><span class="p">,</span> <span class="s2">&quot;ECOL&quot;</span><span class="p">,</span> <span class="s2">&quot;RCOL&quot;</span><span class="p">,</span> <span class="s2">&quot;CSRDRIF&quot;</span><span class="p">])</span>
+
+<span class="n">EDRIFT</span> <span class="o">=</span> <span class="n">DRIFT</span> <span class="o">=</span> <span class="n">DRIF</span>
+<span class="n">QUAD</span> <span class="o">=</span> <span class="n">QUADRUPOLE</span> <span class="o">=</span> <span class="n">KQUAD</span>
+<span class="n">CSRCSBEN</span> <span class="o">=</span> <span class="n">CSBEN</span> <span class="o">=</span> <span class="n">SBEN</span> <span class="o">=</span> <span class="n">SBEND</span> <span class="o">=</span> <span class="n">CSBEND</span>
+<span class="n">CRBEN</span> <span class="o">=</span> <span class="n">CRBEND</span> <span class="o">=</span> <span class="n">RBEND</span> <span class="o">=</span> <span class="n">RBEN</span>
+<span class="n">SEXT</span> <span class="o">=</span> <span class="n">SEXTUPOLE</span> <span class="o">=</span> <span class="n">KSEXT</span>
+<span class="n">OCTU</span> <span class="o">=</span> <span class="n">OCTUPOLE</span> <span class="o">=</span> <span class="n">KOCT</span>
+<span class="n">HKICKER</span> <span class="o">=</span> <span class="n">HKICK</span>
+<span class="n">VKICKER</span> <span class="o">=</span> <span class="n">VKICK</span>
+<span class="n">MONITOR</span> <span class="o">=</span> <span class="n">MONI</span>
+<span class="n">HMONITOR</span> <span class="o">=</span> <span class="n">HMON</span>
+<span class="n">VMONITOR</span> <span class="o">=</span> <span class="n">VMON</span>
+<span class="n">RFCW</span> <span class="o">=</span> <span class="n">RFCA</span>
+<span class="n">SOLE</span> <span class="o">=</span> <span class="n">SOLENOID</span>
+<span class="n">MULTIPOLE</span> <span class="o">=</span> <span class="n">MULT</span>
 
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_marker</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Marker</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<div class="viewcode-block" id="ElegantParser">
+<a class="viewcode-back" href="../../../p/api/at.load.elegant.html#at.load.elegant.ElegantParser">[docs]</a>
+<span class="k">class</span> <span class="nc">ElegantParser</span><span class="p">(</span><span class="n">UpperCaseParser</span><span class="p">,</span> <span class="n">BaseParser</span><span class="p">):</span>
+    <span class="c1"># noinspection PyUnresolvedReferences</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Elegant parser</span>
 
+<span class="sd">    The parser is a subclass of :py:class:`dict` and is a database containing all the</span>
+<span class="sd">    Elegant objects.</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_aperture</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">x_lim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;x_max&#39;</span><span class="p">))</span>
-    <span class="n">y_lim</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;y_max&#39;</span><span class="p">))</span>
-    <span class="n">limits</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">x_lim</span><span class="p">,</span> <span class="n">x_lim</span><span class="p">,</span> <span class="o">-</span><span class="n">y_lim</span><span class="p">,</span> <span class="n">y_lim</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">Aperture</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">limits</span><span class="p">)</span>
+<span class="sd">    Example:</span>
+<span class="sd">        Parse a file:</span>
 
+<span class="sd">        &gt;&gt;&gt; parser = at.ElegantParser()</span>
+<span class="sd">        &gt;&gt;&gt; parser.parse_file(&quot;file1&quot;)</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_quad</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_kicks&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k1&quot;</span><span class="p">))</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;StrMPoleSymplectic4Pass&quot;</span>
-    <span class="k">return</span> <span class="n">Quadrupole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="sd">        Look at the &quot;qf1&quot; element</span>
 
+<span class="sd">        &gt;&gt;&gt; parser[&quot;QF1&quot;]</span>
+<span class="sd">        QUAD(name=QF1, l=1.0, k1=0.5, tilt=0.001)</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_sext</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_kicks&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">k2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">Sextupole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">k2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+<span class="sd">        Generate an AT :py:class:`.Lattice` from the &quot;RING&quot; sequence</span>
 
+<span class="sd">        &gt;&gt;&gt; ring = parser.lattice(use=&quot;RING&quot;)  # generate an AT Lattice</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_oct</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_kicks&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">k3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k3&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">PolynomA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">PolynomB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">k3</span> <span class="o">/</span> <span class="mi">6</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">Octupole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">PolynomA</span><span class="p">,</span> <span class="n">PolynomB</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="n">_continuation</span> <span class="o">=</span> <span class="s2">&quot;&amp;&quot;</span>
+    <span class="n">_linecomment</span> <span class="o">=</span> <span class="s2">&quot;!&quot;</span>
+    <span class="n">_endfile</span> <span class="o">=</span> <span class="s2">&quot;RETURN&quot;</span>
 
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            verbose:    If :py:obj:`True`, print details on the processing</span>
+<span class="sd">            **kwargs:   Initial variable definitions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">globals</span><span class="p">(),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rpn</span> <span class="o">=</span> <span class="n">Rpn</span><span class="p">()</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_multipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">acc</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">acc</span>
+    <span class="k">def</span> <span class="nf">_assign</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="c1"># Special treatment of &quot;line=(...)&quot; commands</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;LINE&quot;</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">val</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;,)&quot;</span><span class="p">)</span>  <span class="c1"># For tuples with a single item</span>
+            <span class="k">return</span> <span class="n">label</span><span class="p">,</span> <span class="n">_Line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">acc</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_assign</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
 
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">PolynomA</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">PolynomB</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="k">if</span> <span class="s2">&quot;knl&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="n">order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;order&quot;</span><span class="p">)))</span>
-        <span class="n">PolynomB</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;knl&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s2">&quot;ksl&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="n">order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;order&quot;</span><span class="p">)))</span>
-        <span class="n">PolynomA</span><span class="p">[</span><span class="n">order</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;ksl&quot;</span><span class="p">))</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">cmdname</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># Special treatment of label #INCLUDE</span>
+        <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="s2">&quot;#INCLUDE&quot;</span><span class="p">:</span>
+            <span class="n">file</span> <span class="o">=</span> <span class="n">cmdname</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">cmdname</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&quot;&#39;</span> <span class="k">else</span> <span class="n">cmdname</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parse_files</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">final</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">cmdname</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">Multipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">PolynomA</span><span class="p">,</span> <span class="n">PolynomB</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_statement</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Special treatment of RPN definitions</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;%&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rpn</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_statement</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
+    <span class="k">def</span> <span class="nf">_argparser</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">argcount</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">argstr</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">bool_attr</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+        <span class="n">str_attr</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+        <span class="n">pos_args</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate a command argument and return a pair (key, value)&quot;&quot;&quot;</span>
 
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_dipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;NumIntSteps&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;n_kicks&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PassMethod&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;BndMPoleSymplectic4Pass&quot;</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;BendingAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;angle&quot;</span><span class="p">))</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;EntranceAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;e1&quot;</span><span class="p">))</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;ExitAngle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;e2&quot;</span><span class="p">))</span>
-    <span class="k">if</span> <span class="s2">&quot;hgap&quot;</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
-        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FullGap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;hgap&quot;</span><span class="p">))</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="c1"># What should we do if no fint property?</span>
-        <span class="n">fint</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;fint&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FringeInt1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fint</span>
-        <span class="n">params</span><span class="p">[</span><span class="s2">&quot;FringeInt2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fint</span>
-    <span class="n">k1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">k2</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k2&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">k3</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k3&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">k4</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;k4&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;PolynomB&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k1</span><span class="p">,</span> <span class="n">k2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">k3</span> <span class="o">/</span> <span class="mi">6</span><span class="p">,</span> <span class="n">k4</span> <span class="o">/</span> <span class="mi">24</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">Dipole</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-
-<span class="c1"># noinspection PyUnusedLocal</span>
-<span class="k">def</span> <span class="nf">create_corrector</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">hkick</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;hkick&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">vkick</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;vkick&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">kick_angle</span> <span class="o">=</span> <span class="p">[</span><span class="n">hkick</span><span class="p">,</span> <span class="n">vkick</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">Corrector</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">kick_angle</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-
-<span class="k">def</span> <span class="nf">create_cavity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">length</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;l&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">voltage</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;volt&quot;</span><span class="p">)</span>
-    <span class="n">frequency</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;freq&quot;</span><span class="p">)</span>
-    <span class="n">params</span><span class="p">[</span><span class="s2">&quot;Phi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;phase&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">RFCavity</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span>
-                    <span class="n">frequency</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">)</span>
-
-
-<span class="n">ELEMENT_MAP</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;drift&quot;</span><span class="p">:</span> <span class="n">create_drift</span><span class="p">,</span>
-    <span class="s2">&quot;drif&quot;</span><span class="p">:</span> <span class="n">create_drift</span><span class="p">,</span>
-    <span class="s2">&quot;edrift&quot;</span><span class="p">:</span> <span class="n">create_drift</span><span class="p">,</span>
-    <span class="c1"># This should be a wiggler.</span>
-    <span class="s2">&quot;cwiggler&quot;</span><span class="p">:</span> <span class="n">create_drift</span><span class="p">,</span>
-    <span class="s2">&quot;csben&quot;</span><span class="p">:</span> <span class="n">create_dipole</span><span class="p">,</span>
-    <span class="s2">&quot;csbend&quot;</span><span class="p">:</span> <span class="n">create_dipole</span><span class="p">,</span>
-    <span class="s2">&quot;csrcsben&quot;</span><span class="p">:</span> <span class="n">create_dipole</span><span class="p">,</span>
-    <span class="s2">&quot;quadrupole&quot;</span><span class="p">:</span> <span class="n">create_quad</span><span class="p">,</span>
-    <span class="s2">&quot;kquad&quot;</span><span class="p">:</span> <span class="n">create_quad</span><span class="p">,</span>
-    <span class="s2">&quot;ksext&quot;</span><span class="p">:</span> <span class="n">create_sext</span><span class="p">,</span>
-    <span class="s2">&quot;koct&quot;</span><span class="p">:</span> <span class="n">create_oct</span><span class="p">,</span>
-    <span class="s2">&quot;mult&quot;</span><span class="p">:</span> <span class="n">create_multipole</span><span class="p">,</span>
-    <span class="s2">&quot;multipole&quot;</span><span class="p">:</span> <span class="n">create_multipole</span><span class="p">,</span>
-    <span class="s2">&quot;kicker&quot;</span><span class="p">:</span> <span class="n">create_corrector</span><span class="p">,</span>
-    <span class="s2">&quot;hkick&quot;</span><span class="p">:</span> <span class="n">create_corrector</span><span class="p">,</span>
-    <span class="s2">&quot;vkick&quot;</span><span class="p">:</span> <span class="n">create_corrector</span><span class="p">,</span>
-    <span class="s2">&quot;mark&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;marker&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;malign&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;recirc&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;sreffects&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;rcol&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;watch&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;charge&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;monitor&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;moni&quot;</span><span class="p">:</span> <span class="n">create_marker</span><span class="p">,</span>
-    <span class="s2">&quot;maxamp&quot;</span><span class="p">:</span> <span class="n">create_aperture</span><span class="p">,</span>
-    <span class="s2">&quot;rfca&quot;</span><span class="p">:</span> <span class="n">create_cavity</span><span class="p">,</span>
-<span class="p">}</span>
-
-
-<span class="k">def</span> <span class="nf">parse_lines</span><span class="p">(</span><span class="n">contents</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return individual lines.</span>
-
-<span class="sd">    Remove comments and whitespace and convert to lowercase.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">current_line</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">contents</span><span class="o">.</span><span class="n">splitlines</span><span class="p">():</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;!&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">line</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;&amp;&quot;</span><span class="p">):</span>
-                <span class="n">current_line</span> <span class="o">+=</span> <span class="n">line</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">def</span> <span class="nf">arg_value</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">str_attr</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&quot;&#39;</span> <span class="k">else</span> <span class="n">v</span>
+            <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rpn</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_line</span> <span class="o">+</span> <span class="n">line</span><span class="p">)</span>
-                <span class="n">current_line</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">lines</span>
-
-
-<span class="k">def</span> <span class="nf">parse_chunk</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a non-element part of a lattice file.</span>
-
-<span class="sd">    That part can reference already-parsed elements and chunks.</span>
-
-<span class="sd">    if</span>
-<span class="sd">    chunks = {&quot;x&quot;: [&quot;a&quot;, &quot;b&quot;]}</span>
-<span class="sd">    and</span>
-<span class="sd">    elements = {&quot;a&quot;: Marker(...), &quot;b&quot;: Quadrupole(...)}</span>
-
-<span class="sd">    line(a,b) =&gt; [a, b]</span>
-<span class="sd">    -x        =&gt; [b, a]</span>
-<span class="sd">    2*x       =&gt; [a, b, a, b]</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">chunk</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">parts</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
-        <span class="c1"># What&#39;s this?</span>
-        <span class="k">if</span> <span class="s2">&quot;symmetry&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="s2">&quot;line&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
-            <span class="n">line_parts</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;line</span><span class="se">\\</span><span class="s2">s*=</span><span class="se">\\</span><span class="s2">s*</span><span class="se">\\</span><span class="s2">((.*)</span><span class="se">\\</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">part</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">line_parts</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-                <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-                <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">parse_chunk</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">))</span>
-        <span class="k">elif</span> <span class="n">part</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">):</span>
-            <span class="c1"># Reverse a sequence of elements. When doing this, swap</span>
-            <span class="c1"># the entrance and exit angles for any dipoles.</span>
-            <span class="n">chunk_name</span> <span class="o">=</span> <span class="n">part</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="n">key</span><span class="p">,</span> <span class="o">*</span><span class="n">value</span> <span class="o">=</span> <span class="n">argstr</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="n">maxsplit</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">:</span>  <span class="c1"># Keyword argument</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">arg_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>
-                <span class="n">chunk_to_invert</span> <span class="o">=</span> <span class="n">chunks</span><span class="p">[</span><span class="n">chunk_name</span><span class="p">]</span>
-            <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
-                <span class="c1"># You can reverse just a single element: probably a</span>
-                <span class="c1"># bend, as there&#39;s no reason to invert other elements.</span>
-                <span class="n">chunk_to_invert</span> <span class="o">=</span> <span class="p">[</span><span class="n">elements</span><span class="p">[</span><span class="n">chunk_name</span><span class="p">]]</span>
-            <span class="n">inverted_chunk</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">chunk_to_invert</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">el</span><span class="o">.</span><span class="vm">__class__</span> <span class="o">==</span> <span class="n">Dipole</span><span class="p">:</span>
-                    <span class="n">inverted_dipole</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                    <span class="n">inverted_dipole</span><span class="o">.</span><span class="n">EntranceAngle</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">ExitAngle</span>
-                    <span class="n">inverted_dipole</span><span class="o">.</span><span class="n">ExitAngle</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">EntranceAngle</span>
-                    <span class="n">inverted_chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inverted_dipole</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">inverted_chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">el</span><span class="p">)</span>
-            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">inverted_chunk</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">part</span><span class="p">:</span>
-            <span class="n">num</span><span class="p">,</span> <span class="n">chunk_name</span> <span class="o">=</span> <span class="n">part</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">chunk_name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;(&quot;</span><span class="p">:</span>
-                <span class="k">assert</span> <span class="n">chunk_name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;)&quot;</span>
-                <span class="n">chunk_name</span> <span class="o">=</span> <span class="n">chunk_name</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">*</span> <span class="n">parse_chunk</span><span class="p">(</span><span class="n">chunk_name</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">))</span>
-        <span class="k">elif</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">elements</span><span class="p">:</span>
-            <span class="n">chunk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elements</span><span class="p">[</span><span class="n">part</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">chunks</span><span class="p">:</span>
-            <span class="n">chunk</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">chunks</span><span class="p">[</span><span class="n">part</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;part </span><span class="si">{}</span><span class="s2"> not understood&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">part</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">chunk</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">pos_args</span><span class="p">[</span><span class="n">argcount</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unexpected positional argument &#39;</span><span class="si">{</span><span class="n">argstr</span><span class="si">}</span><span class="s2">&#39; ignored&quot;</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">key</span><span class="p">,</span> <span class="n">arg_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">argstr</span><span class="p">)</span>
 
-
-<span class="k">def</span> <span class="nf">expand_elegant</span><span class="p">(</span><span class="n">contents</span><span class="p">,</span> <span class="n">lattice_key</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">):</span>
-    <span class="n">lines</span> <span class="o">=</span> <span class="n">parse_lines</span><span class="p">(</span><span class="n">contents</span><span class="p">)</span>
-    <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;energy&quot;</span><span class="p">:</span> <span class="n">energy</span><span class="p">,</span> <span class="s2">&quot;harmonic_number&quot;</span><span class="p">:</span> <span class="n">harmonic_number</span><span class="p">}</span>
-    <span class="n">elements</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">chunks</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-        <span class="k">if</span> <span class="s2">&quot;:&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
-            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">)</span>
-            <span class="n">variables</span><span class="p">[</span><span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">ELEMENT_MAP</span><span class="p">:</span>
-                <span class="n">elements</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">elegant_element_from_string</span><span class="p">(</span><span class="n">key</span><span class="p">,</span>
-                                                            <span class="n">value</span><span class="p">,</span>
-                                                            <span class="n">variables</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_generator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Element</span><span class="p">]:</span>
+        <span class="k">def</span> <span class="nf">beta</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <span class="n">rest_energy</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;particle&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rest_energy</span>
+            <span class="k">if</span> <span class="n">rest_energy</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="mf">1.0</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">chunk</span> <span class="o">=</span> <span class="n">parse_chunk</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">chunks</span><span class="p">)</span>
-                <span class="n">chunks</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunk</span>
+                <span class="n">gamma</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">rest_energy</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">gamma</span> <span class="o">/</span> <span class="n">gamma</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">chunks</span><span class="p">[</span><span class="n">lattice_key</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span>
+        <span class="n">cavities</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">cell_length</span> <span class="o">=</span> <span class="mi">0</span>
 
+        <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_generator</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">):</span>
+                <span class="n">cavities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+            <span class="n">cell_length</span> <span class="o">+=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="s2">&quot;Length&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+            <span class="k">yield</span> <span class="n">elem</span>
 
-<span class="k">def</span> <span class="nf">handle_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">):</span>
-        <span class="k">assert</span> <span class="n">value</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="c1"># Handle basic arithmetic e.g. &quot;0.04 2 /&quot; -&gt; 0.02</span>
-            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
-            <span class="k">if</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">elif</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">value</span>
+        <span class="n">part</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;particle&quot;</span><span class="p">,</span> <span class="s2">&quot;relativistic&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">UserWarning</span><span class="p">)</span>
+                <span class="n">params</span><span class="p">[</span><span class="s2">&quot;particle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Particle</span><span class="p">(</span><span class="n">part</span><span class="p">)</span>
 
+        <span class="n">rev</span> <span class="o">=</span> <span class="n">beta</span><span class="p">()</span> <span class="o">*</span> <span class="n">clight</span> <span class="o">/</span> <span class="n">cell_length</span>
 
-<span class="k">def</span> <span class="nf">elegant_element_from_string</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">element_string</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create element from Elegant&#39;s string representation.</span>
+        <span class="c1"># Set the cavities&#39; Energy and harmonic number</span>
+        <span class="k">for</span> <span class="n">cav</span> <span class="ow">in</span> <span class="n">cavities</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">cav</span><span class="o">.</span><span class="n">Frequency</span> <span class="o">/</span> <span class="n">rev</span>
+            <span class="n">cav</span><span class="o">.</span><span class="n">HarmNumber</span> <span class="o">=</span> <span class="n">h</span></div>
 
-<span class="sd">    e.g. drift,l=0.045 =&gt; Drift(name, 0.045)</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Parsing elegant element </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">element_string</span><span class="p">))</span>
-    <span class="n">parts</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">element_string</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">element_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
-        <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">split_ignoring_parentheses</span><span class="p">(</span><span class="n">part</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">)</span>
-        <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">handle_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
-
-        <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-
-    <span class="n">energy</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;energy&quot;</span><span class="p">]</span>
-    <span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;harmonic_number&quot;</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">ELEMENT_MAP</span><span class="p">[</span><span class="n">element_type</span><span class="p">](</span><span class="n">name</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="load_elegant">
 <a class="viewcode-back" href="../../../p/api/at.load.elegant.html#at.load.elegant.load_elegant">[docs]</a>
-<span class="k">def</span> <span class="nf">load_elegant</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Lattice</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :py:class:`.Lattice`  from an Elegant file</span>
+<span class="k">def</span> <span class="nf">load_elegant</span><span class="p">(</span>
+    <span class="o">*</span><span class="n">files</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">use</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;RING&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Lattice</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a :py:class:`.Lattice` from Elegant lattice files</span>
+
+<span class="sd">    - Elegant lattice files do not specify the beam energy. :py:class:`ElegantParser`</span>
+<span class="sd">      sets it by default to 1.0 GeV. Use the *energy* keyword to set it to the</span>
+<span class="sd">      desired value.</span>
+<span class="sd">    - Long elements are split according to the default AT value of *NumIntSteps* (10)</span>
+<span class="sd">      unless *N_SLICES* is specified in the Elegant element definition.</span>
 
 <span class="sd">    Parameters:</span>
-<span class="sd">        filename:           Name of an Elegant file</span>
+<span class="sd">        files:              Names of one or several Elegant lattice description files</span>
+<span class="sd">        use:                Name of the Elegant LINE describing the desired</span>
+<span class="sd">          lattice. Default: ``RING``</span>
+<span class="sd">        verbose:            If :py:obj:`True`, print details on the processing</span>
 
 <span class="sd">    Keyword Args:</span>
-<span class="sd">        name (str):         Name of the lattice. Default: taken from</span>
-<span class="sd">          the file.</span>
-<span class="sd">        energy (float):     Energy of the lattice [eV]</span>
-<span class="sd">        periodicity(int):   Number of periods. Default: taken from the elements, or 1</span>
-<span class="sd">        *:                  All other keywords will be set as Lattice attributes</span>
+<span class="sd">        name (str):         Name of the lattice. Default: Elegant sequence name</span>
+<span class="sd">        particle(Particle): Circulating particle. Default: Particle(&quot;relativistic&quot;)</span>
+<span class="sd">        energy (float):     Energy of the lattice [eV]. Default: 1.0E9</span>
+<span class="sd">        periodicity(int):   Number of periods. Default: 1</span>
+<span class="sd">        *:                  Other keywords will be used as Lattice attributes</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        lattice (Lattice):  New :py:class:`.Lattice` object</span>
@@ -725,31 +928,71 @@ document.write(`
 <span class="sd">    See Also:</span>
 <span class="sd">        :py:func:`.load_lattice` for a generic lattice-loading function.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">energy</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">)</span>
-        <span class="n">lattice_key</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;lattice_key&quot;</span><span class="p">)</span>
-        <span class="n">harmonic_number</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;harmonic_number&quot;</span><span class="p">)</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">ElegantParser</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">parse_files</span><span class="p">(</span><span class="o">*</span><span class="n">files</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span><span class="o">.</span><span class="n">lattice</span><span class="p">(</span><span class="n">use</span><span class="o">=</span><span class="n">use</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-        <span class="k">def</span> <span class="nf">elem_iterator</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">elegant_file</span><span class="p">):</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;in_file&quot;</span><span class="p">,</span> <span class="n">elegant_file</span><span class="p">))</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-                <span class="n">contents</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-                <span class="n">element_lines</span> <span class="o">=</span> <span class="n">expand_elegant</span><span class="p">(</span>
-                    <span class="n">contents</span><span class="p">,</span> <span class="n">lattice_key</span><span class="p">,</span> <span class="n">energy</span><span class="p">,</span> <span class="n">harmonic_number</span>
-                <span class="p">)</span>
-                <span class="n">params</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;energy&quot;</span><span class="p">,</span> <span class="n">energy</span><span class="p">)</span>
-                <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">element_lines</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="n">line</span>
 
-        <span class="n">lat</span> <span class="o">=</span> <span class="n">Lattice</span><span class="p">(</span><span class="n">abspath</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span> <span class="n">iterator</span><span class="o">=</span><span class="n">elem_iterator</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">lat</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Failed to load elegant &#39;</span>
-                         <span class="s1">&#39;lattice </span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span></div>
+
+<span class="n">_AT2EL</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Quadrupole</span><span class="p">:</span> <span class="n">KQUAD</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Sextupole</span><span class="p">:</span> <span class="n">KSEXT</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Octupole</span><span class="p">:</span> <span class="n">KOCT</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">ThinMultipole</span><span class="p">:</span> <span class="n">multipole</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Multipole</span><span class="p">:</span> <span class="n">multipole</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">RFCavity</span><span class="p">:</span> <span class="n">RFCA</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Drift</span><span class="p">:</span> <span class="n">DRIF</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Bend</span><span class="p">:</span> <span class="n">SBEN</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Marker</span><span class="p">:</span> <span class="n">MARK</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Monitor</span><span class="p">:</span> <span class="n">MONI</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+    <span class="n">elt</span><span class="o">.</span><span class="n">Corrector</span><span class="p">:</span> <span class="n">KICKER</span><span class="o">.</span><span class="n">from_at</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">_ElegantExporter</span><span class="p">(</span><span class="n">Exporter</span><span class="p">):</span>
+    <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">continuation</span> <span class="o">=</span> <span class="s2">&quot;&amp;&quot;</span>
+    <span class="n">bool_fmt</span> <span class="o">=</span> <span class="p">{</span><span class="kc">False</span><span class="p">:</span> <span class="s2">&quot;.FALSE.&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">:</span> <span class="s2">&quot;.TRUE.&quot;</span><span class="p">}</span>
+    <span class="n">use_line</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">generate_madelems</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">eltype</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">elt</span><span class="o">.</span><span class="n">Element</span><span class="p">],</span> <span class="n">elemdict</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ElementDescr</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">ElementDescr</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">_AT2EL</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">eltype</span><span class="p">,</span> <span class="n">ignore</span><span class="p">)(</span><span class="n">elemdict</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">at2elegant</span><span class="p">(</span><span class="n">attype</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_AT2EL</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">attype</span><span class="p">,</span> <span class="n">ignore</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="save_elegant">
+<a class="viewcode-back" href="../../../p/api/at.load.elegant.html#at.load.elegant.save_elegant">[docs]</a>
+<span class="k">def</span> <span class="nf">save_elegant</span><span class="p">(</span>
+    <span class="n">ring</span><span class="p">:</span> <span class="n">Lattice</span><span class="p">,</span>
+    <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save a :py:class:`.Lattice` as an Elegant file</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ring:   lattice</span>
+<span class="sd">        filename: file to be created. If None, write to sys.stdout</span>
+
+<span class="sd">    Keyword Args:</span>
+<span class="sd">        use (str | None): name of the created SEQUENCE of LINE.</span>
+<span class="sd">          Default: name of the PyAT lattice</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">exporter</span> <span class="o">=</span> <span class="n">_ElegantExporter</span><span class="p">(</span><span class="n">ring</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">exporter</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
 
 
 
 <span class="n">register_format</span><span class="p">(</span>
-    <span class="s2">&quot;.lte&quot;</span><span class="p">,</span> <span class="n">load_elegant</span><span class="p">,</span> <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Elegant format. See :py:func:`.load_elegant`.&quot;</span><span class="p">)</span>
+    <span class="s2">&quot;.lte&quot;</span><span class="p">,</span>
+    <span class="n">load_elegant</span><span class="p">,</span>
+    <span class="n">save_elegant</span><span class="p">,</span>
+    <span class="n">descr</span><span class="o">=</span><span class="s2">&quot;Elegant lattice description. See :py:func:`.load_elegant`.&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 
                 </article>
@@ -779,8 +1022,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -813,7 +1056,7 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.0.
 </p></div>
       
     </div>
