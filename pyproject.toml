@@ -52,7 +52,7 @@ ChangeLog = "https://github.com/atcollab/at/releases"
 [project.optional-dependencies]
 mpi = ["mpi4py"]
 plot = ["matplotlib"]
-dev = ["pytest >= 2.9", "pytest-cov", "flake8"]
+dev = ["pytest >= 2.9", "pytest-cov", "flake8", "pytest-benchmark"]
 doc = ["Sphinx ~= 8.1", "myst-parser", "myst-nb", "pydata-sphinx-theme",
     "sphinx_design", "sphinx-copybutton"]
 
